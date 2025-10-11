@@ -1,0 +1,13 @@
+debugpy
+dlib
+face-recognition
+golden-eagle
+japanize-matplotlib
+numpy
+matplotlib
+opencv-python
+pydantic
+python-dotenv
+setuptools<81.0
+twine
+wheel
