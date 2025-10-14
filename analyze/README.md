@@ -1,0 +1,25 @@
+> python facecompare.py
+
+```markdown
+C:\Users\sudok\scoop\apps\python313\current\Lib\site-packages\face_recognition_models\__init__.py:7: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+before compare path ./Images/scan/myself.gif
+golden-eagle_version: 1.0.5.6
+C:\Users\sudok\GitHub\golden_eagle\facecompare.py:51: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  hyoka_fl = float(hyoka)
+⭕️ true: 0.415 < hyoka_accuracy: 0.414 before compare path Images\run\face_1.gif
+before compare path ./Images/scan/myself.gif
+golden-eagle_version: 1.0.5.6
+⭕️ true: 0.415 < hyoka_accuracy: 0.392 before compare path Images\run\face_2.gif
+```
+
+> aqua -z facepicture.txt ⭕️
+
+```markdown
+ 7 : ⭕️ true: 0.415 < hyoka_accuracy: 0.414 before compare path Images\run\face_1.gif
+10 : ⭕️ true: 0.415 < hyoka_accuracy: 0.392 before compare path Images\run\face_2.gif
+```
+
+※ 精度評価の結果をエクセルシートにコピー＆ペーストする。
+
+サンプル名 / 顔認識分析.xlsx
