@@ -16,7 +16,7 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-BFP = os.environ.get("before_param")
+AFP = os.environ.get("after_param")
 ALP = os.environ.get("all_param")
 GAN = os.environ.get("ga_num_run") or ""
 LON = os.environ.get("lo_num") or ""
@@ -28,23 +28,23 @@ try:
     for i in range(len(input_list)):
         img_file_name = str(input_list[i])
         all_pic = face_recognition.load_image_file(img_file_name)
-        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
+        after_par = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
         lo_pic = face_recognition.face_locations(all_pic, model='cnn')
-        lo_before = face_recognition.face_locations(my_before, model='cnn')
-        around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
+        lo_aft = face_recognition.face_locations(after_par, model='cnn')
+        around_the_face_b = face_recognition.face_landmarks(after_par, lo_aft)
         around_a = face_recognition.face_landmarks(all_pic, lo_pic)
 
-        print('before compare path ' + str(BFP))
+        print('before compare path ' + str(AFP))
 
         ga_lose = GAN
 
         print("golden-eagle_version: " + ga.__version__)
-        ga.compare_before_after(all_pic, my_before, float(ga_lose))
+        ga.compare_before_after(all_pic, after_par, float(ga_lose))
 
         # The data is processed as a feature quantity.
         all_pic = face_recognition.load_image_file(img_file_name)
-        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
-        en_b = face_recognition.face_encodings(my_before)[0]
+        after_par = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+        en_b = face_recognition.face_encodings(after_par)[0]
         en_a = face_recognition.face_encodings(all_pic)[0]
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
@@ -66,7 +66,7 @@ try:
 
         # Values of lose or higher are expected.
         elif not hyoka.astype(np.float64)[0] < float(lose):
-            fail = (
+            failed = (
                 "❎️ lose: "
                 + str(lose)
                 + " < hyoka_accuracy: "
@@ -74,7 +74,7 @@ try:
                 + " after compare path "
                 + str(img_file_name)
             )
-            print(fail)
+            print(failed)
 
         # Usually not reached.
         else:
