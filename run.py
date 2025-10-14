@@ -64,6 +64,22 @@ class Face(threading.Thread):
         my_before = face_recognition.load_image_file(before)
         my_after = face_recognition.load_image_file(after)
 
+        # facecompare version.
+        print("golden-eagle_version: " + ga.__version__)
+
+        # golden-eagle accuary number.
+        ga_lose: Optional[str] = GAN
+
+        # value is 0.6 and lower numbers make face comparisons more strict:
+        ga.compare_before_after(my_before, my_after, float(ga_lose))
+
+        before = os.path.expanduser(str(BFP))
+        after = os.path.expanduser(str(AFP))
+
+        # Specify the path of the face photo to be compared.
+        my_before = face_recognition.load_image_file(before)
+        my_after = face_recognition.load_image_file(after)
+
         # The default is “hog”.
         lo_before = face_recognition.face_locations(my_before, model='cnn')
         lo_after = face_recognition.face_locations(my_after, model='cnn')
@@ -74,24 +90,10 @@ class Face(threading.Thread):
         around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
         around_the_face_a = face_recognition.face_landmarks(my_after, lo_after)
 
-        # facecompare version.
-        print("golden-eagle_version: " + ga.__version__)
-
-        # golden-eagle accuary number.
-        ga_lose: Optional[str] = GAN
-
-        # value is 0.6 and lower numbers make face comparisons more strict:
-        ga.compare_before_after(my_before, my_after, float(ga_lose))
-        before = os.path.expanduser(str(BFP))
-        after = os.path.expanduser(str(AFP))
-
-        # Specify the path of the face photo to be compared.
-        my_before = face_recognition.load_image_file(before)
-        my_after = face_recognition.load_image_file(after)
-
         # The data is processed as a feature quantity.
         en_b = face_recognition.face_encodings(my_before)[0]
         en_a = face_recognition.face_encodings(my_after)[0]
+
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
 
