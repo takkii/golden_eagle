@@ -1,8 +1,9 @@
+import gc
 import os
 import pathlib
+import traceback
 from os.path import dirname, join
 
-import cv2
 import face_recognition
 import numpy as np
 import numpy.typing as npt
@@ -18,45 +19,89 @@ load_dotenv(dotenv_path)
 BFP = os.environ.get("before_param")
 ALP = os.environ.get("all_param")
 GAN = os.environ.get("ga_num_run") or ""
+LON = os.environ.get("lo_num") or ""
 
-input_dir = str(ALP)
-input_list = list(pathlib.Path(input_dir).glob('**/*.gif'))
+try:
+    input_dir = str(ALP)
+    input_list = list(pathlib.Path(input_dir).glob('**/*.gif'))
 
-for i in range(len(input_list)):
-    img_file_name = str(input_list[i])
-    img_np = np.fromfile(img_file_name, dtype=np.uint8)
-    img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
-    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    for i in range(len(input_list)):
+        img_file_name = str(input_list[i])
+        all_pic = face_recognition.load_image_file(img_file_name)
+        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
+        lo_pic = face_recognition.face_locations(all_pic, model='cnn')
+        lo_before = face_recognition.face_locations(my_before, model='cnn')
+        around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
+        around_a = face_recognition.face_landmarks(all_pic, lo_pic)
 
-    all_pic = face_recognition.load_image_file(img_file_name)
-    my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
-    lo_pic = face_recognition.face_locations(all_pic, model='cnn')
-    lo_before = face_recognition.face_locations(my_before, model='cnn')
-    around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
-    around_a = face_recognition.face_landmarks(all_pic, lo_pic)
-    # golden-eagle accuary number.
-    ga_lose = GAN
+        print('before compare path ' + str(BFP))
 
-    # facecompare version.
-    print("golden-eagle_version: " + ga.__version__)
-    ga.compare_before_after(all_pic, my_before, float(ga_lose))
+        ga_lose = GAN
 
-    # The data is processed as a feature quantity.
-    all_pic = face_recognition.load_image_file(img_file_name)
-    my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
-    en_b = face_recognition.face_encodings(my_before)[0]
-    en_a = face_recognition.face_encodings(all_pic)[0]
-    face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
-    hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
+        print("golden-eagle_version: " + ga.__version__)
+        ga.compare_before_after(all_pic, my_before, float(ga_lose))
 
-    # Accuracy evaluation, no face picture editing.
-    accuracy = "accuracy:" + str(hyoka)
-    print(accuracy)
+        # The data is processed as a feature quantity.
+        all_pic = face_recognition.load_image_file(img_file_name)
+        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
+        en_b = face_recognition.face_encodings(my_before)[0]
+        en_a = face_recognition.face_encodings(all_pic)[0]
+        face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
+        hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
+        hyoka_fl = float(hyoka)
 
-# output
-# golden-eagle_version: 1.0.5.5
-# = Same picture.
-# accuracy:[0.]
-# ≠ Different picture.
-# golden-eagle_version: 1.0.5.5
-# accuracy:[0.255]
+        lose = LON
+
+        # # A return value of lose or less is expected.
+        if hyoka.astype(np.float64)[0] < float(lose):
+            truth = (
+                "⭕️ true: "
+                + str(lose)
+                + " < hyoka_accuracy: "
+                + str(hyoka_fl)
+                + " after compare path "
+                + str(img_file_name)
+            )
+            print(truth)
+
+        # Values of lose or higher are expected.
+        elif not hyoka.astype(np.float64)[0] < float(lose):
+            fail = (
+                "❎️ lose: "
+                + str(lose)
+                + " < hyoka_accuracy: "
+                + str(hyoka_fl)
+                + " after compare path "
+                + str(img_file_name)
+            )
+            print(fail)
+
+        # Usually not reached.
+        else:
+            # Unique exception occurrence.
+            raise ValueError("Please check the passcode for your face picture.")
+
+# TraceBack.
+except Exception:
+    # Specify the folder to record the exception log.
+    except_folder = os.getcwd()
+    # Specify the file to log exception occurrences.
+    except_file = os.getcwd() + '.log'
+
+    # Load the dictionary.
+    if os.path.isdir(os.path.expanduser(except_folder)):
+        # Log writing process.
+        with open(os.path.expanduser(except_file), 'a') as log_py:
+            traceback.print_exc(file=log_py)
+
+        # throw except.
+        raise RuntimeError from None
+
+    # Current directory Not Found.
+    else:
+        # Unique exception occurrence.
+        raise ValueError("None, Please Check the Current directory.")
+
+# Once Exec.
+finally:
+    gc.collect()
