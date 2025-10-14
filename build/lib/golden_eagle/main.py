@@ -1,42 +1,18 @@
 import gc
 import os
 import traceback
-from typing import ClassVar, Optional
+from typing import Optional
 
 import cv2
 import face_recognition
-import numpy.typing as npt
-from pydantic import BaseModel
-
-
-class Compare(BaseModel):
-    before: ClassVar[list]
-    after: ClassVar[list]
-    before_enc: ClassVar[list]
-    after_enc: ClassVar[list]
-    en_loc_before: ClassVar[list]
-    en_before: ClassVar[list]
-    en_loc_after: ClassVar[list]
-    en_after: ClassVar[list]
-    tolerance: ClassVar[float]
-    results: ClassVar[list]
-    face_d: ClassVar[npt.NDArray]
-    hyoka: ClassVar[npt.DTypeLike]
 
 
 # face compare to myself_(before and after and evaluation)
 def compare_before_after(before, after, evaluation):
-    # pydantic syntax check, true || false
-    Compare == before
-    Compare == after
 
     # This is myself before and after picture.
     before_enc = cv2.cvtColor(before, cv2.COLOR_BGR2RGB)
     after_enc = cv2.cvtColor(after, cv2.COLOR_BGR2RGB)
-
-    # pydantic syntax check, true || false
-    Compare == before_enc
-    Compare == after_enc
 
     # A list of 128-dimensional face recognition before encode
     # Which face detection model to use.
@@ -45,22 +21,16 @@ def compare_before_after(before, after, evaluation):
     # which is GPU/CUDA accelerated (if available).
     en_loc_before = face_recognition.face_locations(before_enc, model='cnn')[0]
     en_before = face_recognition.face_encodings(before_enc)[0]
-    cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]), (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
 
-    # pydantic syntax check, true || false
-    Compare == en_loc_before
-    Compare == en_before
+    cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]), (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
 
     # A list of 128-dimensional face recognition after encode
     # The default is “hog”.
     # https://face-recognition.readthedocs.io/en/latest/face_recognition.html
     en_loc_after = face_recognition.face_locations(after_enc, model='cnn')[0]
     en_after = face_recognition.face_encodings(after_enc)[0]
-    cv2.rectangle(after, (en_loc_after[3], en_loc_after[0]), (en_loc_after[1], en_loc_after[2]), (0, 255, 0), 3)
 
-    # pydantic syntax check, true || false
-    Compare == en_loc_after
-    Compare == en_after
+    cv2.rectangle(after, (en_loc_after[3], en_loc_after[0]), (en_loc_after[1], en_loc_after[2]), (0, 255, 0), 3)
 
     # https://face-recognition.readthedocs.io/en/latest/readme.html
     # You can do that with the --tolerance parameter. The default tolerance
@@ -68,10 +38,6 @@ def compare_before_after(before, after, evaluation):
 
     # [np.True_] | [np.Flase]
     results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=tolerance)
-
-    # pydantic syntax check, true || false
-    Compare == tolerance
-    Compare == results
 
     # Add exception handling.
     try:
