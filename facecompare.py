@@ -17,6 +17,7 @@ load_dotenv(dotenv_path)
 
 BFP = os.environ.get("before_param")
 ALP = os.environ.get("all_param")
+GAN = os.environ.get("ga_num_run") or ""
 
 input_dir = str(ALP)
 input_list = list(pathlib.Path(input_dir).glob('**/*.gif'))
@@ -33,11 +34,16 @@ for i in range(len(input_list)):
     lo_before = face_recognition.face_locations(my_before, model='cnn')
     around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
     around_a = face_recognition.face_landmarks(all_pic, lo_pic)
+    # golden-eagle accuary number.
+    ga_lose = GAN
 
     # facecompare version.
     print("golden-eagle_version: " + ga.__version__)
+    ga.compare_before_after(all_pic, my_before, float(ga_lose))
 
     # The data is processed as a feature quantity.
+    all_pic = face_recognition.load_image_file(img_file_name)
+    my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
     en_b = face_recognition.face_encodings(my_before)[0]
     en_a = face_recognition.face_encodings(all_pic)[0]
     face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
