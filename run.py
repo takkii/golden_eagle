@@ -80,6 +80,10 @@ class Face(threading.Thread):
         # value is 0.6 and lower numbers make face comparisons more strict:
         ga.compare_before_after(my_before, my_after, float(ga_lose))
 
+        # Specify the path of the face photo to be compared.
+        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
+        my_after = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+
         # The data is processed as a feature quantity.
         en_b = face_recognition.face_encodings(my_before)[0]
         en_a = face_recognition.face_encodings(my_after)[0]

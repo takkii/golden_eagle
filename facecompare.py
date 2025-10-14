@@ -16,9 +16,9 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-AFP = os.environ.get("after_param")
+SIP = os.environ.get("single_param")
 ALP = os.environ.get("all_param")
-GAN = os.environ.get("ga_num_run") or ""
+GAN = os.environ.get("ga_num_compare") or ""
 LON = os.environ.get("lo_num") or ""
 
 try:
@@ -28,13 +28,13 @@ try:
     for i in range(len(input_list)):
         img_file_name = str(input_list[i])
         all_pic = face_recognition.load_image_file(img_file_name)
-        after_par = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+        after_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
         lo_pic = face_recognition.face_locations(all_pic, model='cnn')
         lo_aft = face_recognition.face_locations(after_par, model='cnn')
         around_the_face_b = face_recognition.face_landmarks(after_par, lo_aft)
         around_a = face_recognition.face_landmarks(all_pic, lo_pic)
 
-        print('before compare path ' + str(AFP))
+        print('before compare path ' + str(SIP))
 
         ga_lose = GAN
 
@@ -43,7 +43,7 @@ try:
 
         # The data is processed as a feature quantity.
         all_pic = face_recognition.load_image_file(img_file_name)
-        after_par = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+        after_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
         en_b = face_recognition.face_encodings(after_par)[0]
         en_a = face_recognition.face_encodings(all_pic)[0]
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
