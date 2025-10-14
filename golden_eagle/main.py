@@ -34,10 +34,10 @@ def compare_before_after(before, after, evaluation):
 
     # https://face-recognition.readthedocs.io/en/latest/readme.html
     # You can do that with the --tolerance parameter. The default tolerance
-    tolerance: Optional[float] = evaluation
+    evaluation: Optional[float]
 
     # [np.True_] | [np.Flase]
-    results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=tolerance)
+    results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=evaluation)
 
     # Add exception handling.
     try:
