@@ -16,8 +16,9 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 BFP = os.environ.get("before_param")
+ALP = os.environ.get("all_param")
 
-input_dir = "./Images/run/"
+input_dir = str(ALP)
 input_list = list(pathlib.Path(input_dir).glob('**/*.gif'))
 
 for i in range(len(input_list)):
@@ -25,7 +26,6 @@ for i in range(len(input_list)):
     img_np = np.fromfile(img_file_name, dtype=np.uint8)
     img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # print(img_file_name)
 
     all_pic = face_recognition.load_image_file(img_file_name)
     my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
