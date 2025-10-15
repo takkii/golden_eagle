@@ -1,0 +1,168 @@
+import gc
+import os
+import threading
+from os.path import dirname, join
+from typing import Optional
+
+import cv2
+import debugpy
+import face_recognition
+import japanize_matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import numpy.typing as npt
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True)
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+BFP = os.environ.get("before_param")
+AFP = os.environ.get("after_param")
+GAN = os.environ.get("ga_num_run")
+
+
+# Use SublimeDebugger, debugpy lib.
+def debug_wait_for_attach(listen_to):
+    scoop: Optional[str] = os.path.expanduser('~/scoop/apps/python/current/python.exe')
+    pyenv: Optional[str] = os.path.expanduser('~/.pyenv/shims/python')
+    anyenv: Optional[str] = os.path.expanduser('~/.anyenv/envs/pyenv/shims/python')
+
+    # Use Scoop.
+    if os.path.exists(os.path.expanduser(scoop)):
+        debugpy.configure(python=str(scoop))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+    # Use Pyenv.
+    elif os.path.exists(pyenv):
+        debugpy.configure(python=str(pyenv))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+    # Use Anyenv.
+    elif os.path.exists(anyenv):
+        debugpy.configure(python=str(anyenv))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+
+
+# face class
+class Face(threading.Thread):
+
+    # use thread
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    # run method
+    def run(self):
+        before = os.path.expanduser(str(BFP))
+        after = os.path.expanduser(str(AFP))
+
+        # Specify the path of the face photo to be compared.
+        my_before = face_recognition.load_image_file(before)
+        my_after = face_recognition.load_image_file(after)
+
+        # The default is “hog”.
+        lo_before = face_recognition.face_locations(my_before, model='cnn')[0]
+        lo_after = face_recognition.face_locations(my_after, model='cnn')[0]
+
+        ar_before = face_recognition.face_locations(my_before, model='cnn')
+        ar_after = face_recognition.face_locations(my_after, model='cnn')
+
+        # A list of dicts of face feature locations (eyes, nose, etc)
+        # model – Optional - which model to use.
+        # “large” (default) or “small”.
+        around_the_face_b = face_recognition.face_landmarks(my_before, ar_before)
+        around_the_face_a = face_recognition.face_landmarks(my_after, ar_after)
+
+        # The data is processed as a feature quantity.
+        en_b = face_recognition.face_encodings(my_before)[0]
+        en_a = face_recognition.face_encodings(my_after)[0]
+
+        cv2.rectangle(my_before, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
+        cv2.rectangle(my_after, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
+
+        face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
+        hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
+
+        # Accuracy evaluation, no face photo editing.
+        accuracy = "accuracy:" + str(hyoka)
+        print(accuracy)
+
+        # Face coordinate.
+        print("Before Image, Get face coordinates  :" + str(lo_before))
+        print("After Image, Get face coordinates :" + str(lo_after))
+
+        # Get around the face.
+        print("Before Image, Get around the face :" + str(around_the_face_b))
+        # print("After Image, Get around the face :" + str(around_the_face_a))
+
+        # Use dlib, face recognition.
+        cv2.startWindowThread()
+        # Use face recognition my_after/my_before.
+        cv2.imshow('Yourself before picture image.', my_before)
+        cv2.imshow('Yourself after picture image.', my_after)
+        # Window closes in 8 seconds
+        cv2.waitKey(15000)
+        cv2.waitKey(1)
+        cv2.destroyAllWindows()
+        cv2.waitKey(1)
+
+        # 日本語訳
+        jp_names = {
+            'nose_bridge': '鼻筋',
+            'nose_tip': '鼻先',
+            'top_lip': '上唇',
+            'bottom_lip': '下唇',
+            'left_eye': '左目',
+            'right_eye': '左目',
+            'left_eyebrow': '左眉毛',
+            'right_eyebrow': '右眉毛',
+            'chin': '下顎',
+        }
+
+        # my_before load image, Plotting face recognition with matplotlib.
+        fig = plt.figure(
+            'Yourself before picture image.', figsize=(7, 7), facecolor='lightskyblue', layout='constrained'
+        )
+        bx = fig.add_subplot()
+        bx.imshow(my_before)
+        bx.set_axis_off()
+        for face in around_the_face_b:
+            for name, points in face.items():
+                points = np.array(points)
+
+                bx.plot(points[:, 0], points[:, 1], 'o-', ms=3, label=jp_names[name])
+                bx.legend(fontsize=14)
+                bx.set_title('Face Recognition Range')
+
+        plt.show()
+
+        # my_after load images, Plotting face recognition with matplotlib.
+        fig = plt.figure('Yourself after picture image.', figsize=(7, 7), facecolor='deeppink', layout='constrained')
+        ax = fig.add_subplot()
+        ax.imshow(my_after)
+        ax.set_axis_off()
+        for face in around_the_face_a:
+            for name, points in face.items():
+                points = np.array(points)
+                ax.plot(points[:, 0], points[:, 1], 'o-', ms=3, label=jp_names[name])
+                ax.legend(fontsize=14)
+                ax.set_title('Face Recognition Range')
+
+        plt.show()
+
+
+# try ~ except ~ finally.
+try:
+    thread = Face()
+    thread.run()
+# Custom Exception, raise throw.
+except ValueError as ext:
+    print(ext)
+    raise RuntimeError from None
+
+# Once Exec.
+finally:
+    # GC collection.
+    gc.collect()
