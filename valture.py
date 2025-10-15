@@ -1,0 +1,98 @@
+import gc
+import os
+import threading
+from os.path import dirname, join
+from typing import Optional
+
+import cv2
+import debugpy
+import face_recognition
+import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+
+import golden_eagle as ga
+
+load_dotenv(verbose=True)
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+BFP = os.environ.get("before_param")
+AFP = os.environ.get("after_param")
+GAN = os.environ.get("ga_num_run")
+
+
+# Use SublimeDebugger, debugpy lib.
+def debug_wait_for_attach(listen_to):
+    scoop: Optional[str] = os.path.expanduser('~/scoop/apps/python/current/python.exe')
+    pyenv: Optional[str] = os.path.expanduser('~/.pyenv/shims/python')
+    anyenv: Optional[str] = os.path.expanduser('~/.anyenv/envs/pyenv/shims/python')
+
+    # Use Scoop.
+    if os.path.exists(os.path.expanduser(scoop)):
+        debugpy.configure(python=str(scoop))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+    # Use Pyenv.
+    elif os.path.exists(pyenv):
+        debugpy.configure(python=str(pyenv))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+    # Use Anyenv.
+    elif os.path.exists(anyenv):
+        debugpy.configure(python=str(anyenv))
+        debugpy.listen(listen_to)
+        debugpy.wait_for_client()
+
+
+# face class
+class Face(threading.Thread):
+
+    # use thread
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    # run method
+    def run(self):
+        before = os.path.expanduser(str(BFP))
+        after = os.path.expanduser(str(AFP))
+
+        # Specify the path of the face photo to be compared.
+        my_before = face_recognition.load_image_file(before)
+        my_after = face_recognition.load_image_file(after)
+
+        # golden-eagle version.
+        print("golden-eagle_version: " + ga.__version__)
+
+        # golden-eagle accuary number.
+        ga_lose: Optional[str] = GAN
+
+        # value is 0.6 and lower numbers make face comparisons more strict:
+        ga.compare_before_after(my_before, my_after, float(ga_lose))
+
+        # Use dlib, face recognition.
+        cv2.startWindowThread()
+        # Use face recognition my_after/my_before.
+        cv2.imshow('Yourself before picture image.', my_before)
+        cv2.imshow('Yourself after picture image.', my_after)
+        # Window closes in 8 seconds
+        cv2.waitKey(15000)
+        cv2.waitKey(1)
+        cv2.destroyAllWindows()
+        cv2.waitKey(1)
+        plt.show()
+
+
+# try ~ except ~ finally.
+try:
+    thread = Face()
+    thread.run()
+# Custom Exception, raise throw.
+except ValueError as ext:
+    print(ext)
+    raise RuntimeError from None
+
+# Once Exec.
+finally:
+    # GC collection.
+    gc.collect()
