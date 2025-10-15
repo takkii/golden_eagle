@@ -16,8 +16,8 @@ def compare_before_after(before, after, evaluation):
 
     # A list of 128-dimensional face recognition before encode
     # Which face detection model to use.
-    # “hog” is less accurate but faster on CPUs.
-    # “cnn” is a more accurate deep-learning model,
+    # "hog" is less accurate but faster on CPUs.
+    # "cnn" is a more accurate deep-learning model,
     # which is GPU/CUDA accelerated (if available).
     en_loc_before = face_recognition.face_locations(before_enc, model='cnn')[0]
     en_before = face_recognition.face_encodings(before_enc)[0]
@@ -25,7 +25,7 @@ def compare_before_after(before, after, evaluation):
     cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]), (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
 
     # A list of 128-dimensional face recognition after encode
-    # The default is “hog”.
+    # The default is "hog" / other "cnn"
     # https://face-recognition.readthedocs.io/en/latest/face_recognition.html
     en_loc_after = face_recognition.face_locations(after_enc, model='cnn')[0]
     en_after = face_recognition.face_encodings(after_enc)[0]
@@ -34,9 +34,9 @@ def compare_before_after(before, after, evaluation):
 
     # https://face-recognition.readthedocs.io/en/latest/readme.html
     # You can do that with the --tolerance parameter. The default tolerance
-    # [np.True_] | [np.False]
+    tolerance: Optional[float] = evaluation
 
-    results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=evaluation)
+    results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=tolerance)
 
     # Add exception handling.
     try:
@@ -48,12 +48,12 @@ def compare_before_after(before, after, evaluation):
         # Values of 0.32 or higher are expected.
         elif not results[0]:
             # Unique exception occurrence.
-            raise ValueError("Use a recent photo of your face.")
+            raise ValueError("Use a recent pictures of your face.")
 
         # Usually not reached.
         else:
             # Unique exception occurrence.
-            raise ValueError("Please check the passcode for your face photo.")
+            raise ValueError("Please check the passcode for your face pictures.")
 
     # TraceBack.
     except Exception:
