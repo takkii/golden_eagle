@@ -51,7 +51,7 @@ try:
                 + str(lose)
                 + " > hyoka_accuracy: "
                 + str(hyoka_fl)
-                + " before compare path "
+                + " after compare path "
                 + str(img_file_name)
             )
             print(successes)
@@ -63,7 +63,7 @@ try:
                 + str(lose)
                 + " < hyoka_accuracy: "
                 + str(hyoka_fl)
-                + " before compare path "
+                + " after compare path "
                 + str(img_file_name)
             )
             print(failed)
