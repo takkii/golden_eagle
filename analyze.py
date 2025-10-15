@@ -30,16 +30,24 @@ try:
         all_enc = cv2.cvtColor(all_pic, cv2.COLOR_BGR2RGB)
         after_enc = cv2.cvtColor(after_par, cv2.COLOR_BGR2RGB)
 
-        lo_pic = face_recognition.face_locations(all_enc, model='cnn')
-        lo_aft = face_recognition.face_locations(after_enc, model='cnn')
-
-        around_the_face_b = face_recognition.face_landmarks(after_par, lo_aft)
-        around_a = face_recognition.face_landmarks(all_pic, lo_pic)
+        lo_before = face_recognition.face_locations(all_enc, model='cnn')[0]
+        lo_after = face_recognition.face_locations(after_enc, model='cnn')[0]
 
         print('before compare path ' + str(SIP))
 
         en_b = face_recognition.face_encodings(after_enc)[0]
         en_a = face_recognition.face_encodings(all_enc)[0]
+
+        cv2.rectangle(all_enc, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
+        cv2.rectangle(after_enc, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
+
+        cv2.startWindowThread()
+        cv2.imshow('ALL picture image.', all_enc)
+        cv2.imshow('Before picture image.', after_enc)
+        cv2.waitKey(15000)
+        cv2.waitKey(1)
+        cv2.destroyAllWindows()
+        cv2.waitKey(1)
 
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
