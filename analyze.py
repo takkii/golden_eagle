@@ -46,20 +46,20 @@ try:
 
         # # A return value of lose or less is expected.
         if hyoka.astype(np.float64)[0] < float(lose):
-            truth = (
-                "⭕️ true: "
+            successes = (
+                "⭕️ success: "
                 + str(lose)
-                + " < hyoka_accuracy: "
+                + " > hyoka_accuracy: "
                 + str(hyoka_fl)
                 + " before compare path "
                 + str(img_file_name)
             )
-            print(truth)
+            print(successes)
 
         # Values of lose or higher are expected.
         elif not hyoka.astype(np.float64)[0] < float(lose):
             failed = (
-                "❎️ lose: "
+                "❎️ failed: "
                 + str(lose)
                 + " < hyoka_accuracy: "
                 + str(hyoka_fl)
