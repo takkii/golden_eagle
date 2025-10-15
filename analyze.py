@@ -9,8 +9,6 @@ import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
 
-import golden_eagle as ga
-
 load_dotenv(verbose=True)
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -18,7 +16,6 @@ load_dotenv(dotenv_path)
 
 SIP = os.environ.get("single_param")
 ALP = os.environ.get("all_param")
-GAN = os.environ.get("ga_num_compare") or ""
 LON = os.environ.get("lo_num") or ""
 
 try:
@@ -35,11 +32,6 @@ try:
         around_a = face_recognition.face_landmarks(all_pic, lo_pic)
 
         print('before compare path ' + str(SIP))
-
-        ga_lose = GAN
-
-        print("golden-eagle_version: " + ga.__version__)
-        ga.compare_before_after(all_pic, after_par, float(ga_lose))
 
         # The data is processed as a feature quantity.
         all_pic = face_recognition.load_image_file(img_file_name)
