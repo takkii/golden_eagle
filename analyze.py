@@ -4,6 +4,7 @@ import pathlib
 import traceback
 from os.path import dirname, join
 
+import cv2
 import face_recognition
 import numpy as np
 import numpy.typing as npt
@@ -26,18 +27,20 @@ try:
         img_file_name = str(input_list[i])
         all_pic = face_recognition.load_image_file(img_file_name)
         after_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
-        lo_pic = face_recognition.face_locations(all_pic, model='cnn')
-        lo_aft = face_recognition.face_locations(after_par, model='cnn')
+        all_enc = cv2.cvtColor(all_pic, cv2.COLOR_BGR2RGB)
+        after_enc = cv2.cvtColor(after_par, cv2.COLOR_BGR2RGB)
+
+        lo_pic = face_recognition.face_locations(all_enc, model='cnn')
+        lo_aft = face_recognition.face_locations(after_enc, model='cnn')
+
         around_the_face_b = face_recognition.face_landmarks(after_par, lo_aft)
         around_a = face_recognition.face_landmarks(all_pic, lo_pic)
 
         print('before compare path ' + str(SIP))
 
-        # The data is processed as a feature quantity.
-        all_pic = face_recognition.load_image_file(img_file_name)
-        after_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
-        en_b = face_recognition.face_encodings(after_par)[0]
-        en_a = face_recognition.face_encodings(all_pic)[0]
+        en_b = face_recognition.face_encodings(after_enc)[0]
+        en_a = face_recognition.face_encodings(all_enc)[0]
+
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
         hyoka_fl = float(hyoka)

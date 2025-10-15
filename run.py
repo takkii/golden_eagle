@@ -13,8 +13,6 @@ import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
 
-import golden_eagle as ga
-
 load_dotenv(verbose=True)
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -22,7 +20,6 @@ load_dotenv(dotenv_path)
 
 BFP = os.environ.get("before_param")
 AFP = os.environ.get("after_param")
-GAN = os.environ.get("ga_num_run") or ""
 
 
 # Use SublimeDebugger, debugpy lib.
@@ -64,35 +61,25 @@ class Face(threading.Thread):
         my_before = face_recognition.load_image_file(before)
         my_after = face_recognition.load_image_file(after)
 
-        # facecompare version.
-        print("golden-eagle_version: " + ga.__version__)
-
-        # golden-eagle accuary number.
-        ga_lose: Optional[str] = GAN
-
-        # value is 0.6 and lower numbers make face comparisons more strict:
-        ga.compare_before_after(my_before, my_after, float(ga_lose))
-
-        before = os.path.expanduser(str(BFP))
-        after = os.path.expanduser(str(AFP))
-
-        # Specify the path of the face photo to be compared.
-        my_before = face_recognition.load_image_file(before)
-        my_after = face_recognition.load_image_file(after)
-
         # The default is “hog”.
-        lo_before = face_recognition.face_locations(my_before, model='cnn')
-        lo_after = face_recognition.face_locations(my_after, model='cnn')
+        lo_before = face_recognition.face_locations(my_before, model='cnn')[0]
+        lo_after = face_recognition.face_locations(my_after, model='cnn')[0]
+
+        ar_before = face_recognition.face_locations(my_before, model='cnn')
+        ar_after = face_recognition.face_locations(my_after, model='cnn')
 
         # A list of dicts of face feature locations (eyes, nose, etc)
         # model – Optional - which model to use.
         # “large” (default) or “small”.
-        around_the_face_b = face_recognition.face_landmarks(my_before, lo_before)
-        around_the_face_a = face_recognition.face_landmarks(my_after, lo_after)
+        around_the_face_b = face_recognition.face_landmarks(my_before, ar_before)
+        around_the_face_a = face_recognition.face_landmarks(my_after, ar_after)
 
         # The data is processed as a feature quantity.
         en_b = face_recognition.face_encodings(my_before)[0]
         en_a = face_recognition.face_encodings(my_after)[0]
+
+        cv2.rectangle(my_before, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
+        cv2.rectangle(my_after, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
 
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
