@@ -26,24 +26,24 @@ try:
     for i in range(len(input_list)):
         img_file_name = str(input_list[i])
         all_pic = face_recognition.load_image_file(img_file_name)
-        after_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
+        before_par = face_recognition.load_image_file(os.path.expanduser(str(SIP)))
         all_enc = cv2.cvtColor(all_pic, cv2.COLOR_BGR2RGB)
-        after_enc = cv2.cvtColor(after_par, cv2.COLOR_BGR2RGB)
+        before_enc = cv2.cvtColor(before_par, cv2.COLOR_BGR2RGB)
 
-        lo_before = face_recognition.face_locations(all_enc, model='cnn')[0]
-        lo_after = face_recognition.face_locations(after_enc, model='cnn')[0]
+        lo_all = face_recognition.face_locations(all_enc, model='cnn')[0]
+        lo_before = face_recognition.face_locations(before_enc, model='cnn')[0]
 
-        print('before compare path ' + str(SIP))
+        print('before picture path ' + str(SIP))
 
-        en_b = face_recognition.face_encodings(after_enc)[0]
+        en_b = face_recognition.face_encodings(before_enc)[0]
         en_a = face_recognition.face_encodings(all_enc)[0]
 
-        cv2.rectangle(all_enc, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
-        cv2.rectangle(after_enc, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
+        cv2.rectangle(all_enc, (lo_all[3], lo_all[0]), (lo_all[1], lo_all[2]), (0, 255, 0), 3)
+        cv2.rectangle(before_enc, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
 
         cv2.startWindowThread()
         cv2.imshow('ALL picture image.', all_enc)
-        cv2.imshow('Before picture image.', after_enc)
+        cv2.imshow('Before picture image.', before_enc)
         cv2.waitKey(15000)
         cv2.waitKey(1)
         cv2.destroyAllWindows()
@@ -62,7 +62,7 @@ try:
                 + str(lose)
                 + " > hyoka_accuracy: "
                 + str(hyoka_fl)
-                + " after compare path "
+                + " all picture path "
                 + str(img_file_name)
             )
             print(successes)
@@ -74,7 +74,7 @@ try:
                 + str(lose)
                 + " < hyoka_accuracy: "
                 + str(hyoka_fl)
-                + " after compare path "
+                + " all picture path "
                 + str(img_file_name)
             )
             print(failed)
