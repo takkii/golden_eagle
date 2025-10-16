@@ -71,7 +71,7 @@ class Face(threading.Thread):
 
         # A list of dicts of face feature locations (eyes, nose, etc)
         # model – Optional - which model to use.
-        # “large” (default) or “small”.
+        # "large" (default) or "small".
         around_the_face_b = face_recognition.face_landmarks(my_before, ar_before)
         around_the_face_a = face_recognition.face_landmarks(my_after, ar_after)
 
