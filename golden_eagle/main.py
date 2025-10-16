@@ -25,7 +25,7 @@ def compare_before_after(before, after, evaluation):
     cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]), (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
 
     # A list of 128-dimensional face recognition after encode
-    # The default is "hog" / other "cnn"
+    # The default is "hog" / other select "cnn"
     # https://face-recognition.readthedocs.io/en/latest/face_recognition.html
     en_loc_after = face_recognition.face_locations(after_enc, model='cnn')[0]
     en_after = face_recognition.face_encodings(after_enc)[0]
@@ -48,12 +48,12 @@ def compare_before_after(before, after, evaluation):
         # Values of 0.32 or higher are expected.
         elif not results[0]:
             # Unique exception occurrence.
-            raise ValueError("Use a recent pictures of your face.")
+            raise ValueError("hyoka accuracy is over number, Please use different picture")
 
         # Usually not reached.
         else:
             # Unique exception occurrence.
-            raise ValueError("Please check the passcode for your face pictures.")
+            raise ValueError("hyoka accuracy is diable, Please select diffrent picture.")
 
     # TraceBack.
     except Exception:
@@ -74,7 +74,7 @@ def compare_before_after(before, after, evaluation):
         # Current directory Not Found.
         else:
             # Unique exception occurrence.
-            raise ValueError("None, Please Check the Current directory.")
+            raise ValueError("Check, error log output on folder tree.")
 
     # Once Exec.
     finally:
