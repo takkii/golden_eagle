@@ -23,7 +23,7 @@ ga_num = 0.32
 before_param_face = "../Images/run/face_1.gif"
 # Using, facecompare.py
 after_param_face = "../Images/run/face_2.gif"
-# Using, valture.py
+# Using, golden-eagle.py
 ga_num_run = 0.32
 # Using, analyze.py
 lo_num = 0.442
