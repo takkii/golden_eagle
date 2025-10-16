@@ -1,4 +1,4 @@
 *.pyc
+.env
 .mypy_cache/*
 Images/*
-.env
