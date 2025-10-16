@@ -14,8 +14,8 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-BFP = os.environ.get("before_param")
-AFP = os.environ.get("after_param")
+BFP = os.environ.get("before_param_face")
+AFP = os.environ.get("after_param_face")
 GAN = os.environ.get("ga_num") or ""
 
 
