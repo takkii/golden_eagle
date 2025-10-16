@@ -12,6 +12,8 @@ before compare path ./Images/scan/myself.gif
 
 ```
 
+> gem install sheltered-girl
+>
 > aqua -z ./analyze/analyze_result.txt ⭕️
 
 ```markdown
