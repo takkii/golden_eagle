@@ -22,29 +22,6 @@ BFP = os.environ.get("before_param")
 AFP = os.environ.get("after_param")
 
 
-# Use SublimeDebugger, debugpy lib.
-def debug_wait_for_attach(listen_to):
-    scoop: Optional[str] = os.path.expanduser('~/scoop/apps/python/current/python.exe')
-    pyenv: Optional[str] = os.path.expanduser('~/.pyenv/shims/python')
-    anyenv: Optional[str] = os.path.expanduser('~/.anyenv/envs/pyenv/shims/python')
-
-    # Use Scoop.
-    if os.path.exists(os.path.expanduser(scoop)):
-        debugpy.configure(python=str(scoop))
-        debugpy.listen(listen_to)
-        debugpy.wait_for_client()
-    # Use Pyenv.
-    elif os.path.exists(pyenv):
-        debugpy.configure(python=str(pyenv))
-        debugpy.listen(listen_to)
-        debugpy.wait_for_client()
-    # Use Anyenv.
-    elif os.path.exists(anyenv):
-        debugpy.configure(python=str(anyenv))
-        debugpy.listen(listen_to)
-        debugpy.wait_for_client()
-
-
 # face class
 class Face(threading.Thread):
 
