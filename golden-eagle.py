@@ -19,7 +19,7 @@ load_dotenv(dotenv_path)
 
 BFP = os.environ.get("before_param")
 AFP = os.environ.get("after_param")
-GAN = os.environ.get("ga_num_run")
+GAN = os.environ.get("ga_num_run") or ""
 
 
 # face class
