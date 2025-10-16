@@ -10,4 +10,4 @@ LICENSE) [![PyPI Downloads](https://static.pepy.tech/badge/golden-eagle)](https:
 pip3 install golden-eagle
 ```
 
-※ Please README japanese [here](https://github.com/takkii/facecompare/wiki/manual_ja).
+※ Please README japanese [here](https://github.com/takkii/golden_eagle/wiki/manual_ja).
