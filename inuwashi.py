@@ -90,11 +90,11 @@ class Face(threading.Thread):
         print(accuracy)
 
         # Face coordinate.
-        print("Before Image, Get face coordinates  :" + str(lo_before))
-        print("After Image, Get face coordinates :" + str(lo_after))
+        # print("Before Image, Get face coordinates  :" + str(lo_before))
+        # print("After Image, Get face coordinates :" + str(lo_after))
 
         # Get around the face.
-        print("Before Image, Get around the face :" + str(around_the_face_b))
+        # print("Before Image, Get around the face :" + str(around_the_face_b))
         # print("After Image, Get around the face :" + str(around_the_face_a))
 
         # Use dlib, face recognition.
