@@ -82,7 +82,7 @@ try:
         # Usually not reached.
         else:
             # Unique exception occurrence.
-            raise ValueError("Please check the passcode for your face picture.")
+            raise ValueError("hyoka accuracy is diable, please select diffrent picture.")
 
 # TraceBack.
 except Exception:
@@ -103,7 +103,7 @@ except Exception:
     # Current directory Not Found.
     else:
         # Unique exception occurrence.
-        raise ValueError("None, Please Check the Current directory.")
+        raise ValueError("Check, error log output on folder tree.")
 
 # Once Exec.
 finally:
