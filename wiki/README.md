@@ -24,7 +24,9 @@ before_param_face = "../Images/run/face_1.gif"
 # Using, facecompare.py
 after_param_face = "../Images/run/face_2.gif"
 # Using, valture.py
-lo_num = 0.413
+ga_num_run = 0.32
+# Using, analyze.py
+lo_num = 0.442
 ```
 
-> 更新履歴: 2025/10/16
+> 更新履歴: 2025/10/17
