@@ -31,6 +31,7 @@ class Face(threading.Thread):
 
     # run method
     def run(self):
+        # Destination for the two images.
         before = os.path.expanduser(str(BFP))
         after = os.path.expanduser(str(AFP))
 
