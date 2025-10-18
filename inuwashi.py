@@ -31,6 +31,7 @@ class Face(threading.Thread):
 
     # run method
     def run(self):
+        # Destination for the two images.
         before = os.path.expanduser(str(BFP))
         after = os.path.expanduser(str(AFP))
 
@@ -38,10 +39,18 @@ class Face(threading.Thread):
         my_before = face_recognition.load_image_file(before)
         my_after = face_recognition.load_image_file(after)
 
-        # The default is “hog”.
+        # Which face detection model to use.
+        # "hog" is less accurate but faster on CPUs.
+        # "cnn" is a more accurate deep-learning model,
+        # which is GPU/CUDA accelerated (if available) / The default is "hog".
         lo_before = face_recognition.face_locations(my_before, model='cnn')[0]
         lo_after = face_recognition.face_locations(my_after, model='cnn')[0]
 
+        # Which face detection model to use.
+        # "hog" is less accurate but faster on CPUs.
+        # "cnn" is a more accurate deep-learning model,
+        # which is GPU/CUDA accelerated (if available)
+        # Do not add a [0] at the end  / The default is "hog".
         ar_before = face_recognition.face_locations(my_before, model='cnn')
         ar_after = face_recognition.face_locations(my_after, model='cnn')
 
@@ -55,13 +64,15 @@ class Face(threading.Thread):
         en_b = face_recognition.face_encodings(my_before)[0]
         en_a = face_recognition.face_encodings(my_after)[0]
 
+        # Add a square green line around the face.
         cv2.rectangle(my_before, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
         cv2.rectangle(my_after, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
 
+        # hyoka_accuracy calc / result.
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
 
-        # Accuracy evaluation, no face photo editing.
+        # Accuracy evaluation, No face pictures editing.
         accuracy = "accuracy:" + str(hyoka)
         print(accuracy)
 
