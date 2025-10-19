@@ -15,8 +15,11 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+# before picture path.
 SIP = os.environ.get("single_param")
+# all picture path.
 ALP = os.environ.get("all_param")
+# accuracy assessment value reading in .env
 LON = os.environ.get("lo_num") or ""
 
 try:

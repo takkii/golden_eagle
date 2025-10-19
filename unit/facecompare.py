@@ -17,9 +17,12 @@ load_dotenv(dotenv_path)
 # Use, pake.py
 # BFP = os.environ.get("before_param")
 # AFP = os.environ.get("after_param")
+
 # Use, facecompare.py
 BFP = os.environ.get("before_param_face")
 AFP = os.environ.get("after_param_face")
+
+# PyPi package golden-eagle accuary numbers reading in .env
 GAN = os.environ.get("ga_num") or ""
 
 

@@ -18,7 +18,9 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+# Yourself before picture image.
 BFP = os.environ.get("before_param")
+# Yourself after picture image.
 AFP = os.environ.get("after_param")
 
 
