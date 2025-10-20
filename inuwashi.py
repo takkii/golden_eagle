@@ -2,10 +2,8 @@ import gc
 import os
 import threading
 from os.path import dirname, join
-from typing import Optional
 
 import cv2
-import debugpy
 import face_recognition
 import japanize_matplotlib
 import matplotlib.pyplot as plt
