@@ -9,6 +9,7 @@ import face_recognition
 import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
+from tqdm import tqdm
 
 load_dotenv(verbose=True)
 
@@ -27,7 +28,7 @@ try:
     input_dir = str(ALP)
     input_list = list(pathlib.Path(input_dir).glob('**/*.gif'))
 
-    for i in range(len(input_list)):
+    for i in tqdm(range(len(input_list))):
         # One-to-Many Face Recognition.
         img_file_name = str(input_list[i])
         all_pic = face_recognition.load_image_file(img_file_name)
@@ -43,7 +44,7 @@ try:
         lo_before = face_recognition.face_locations(before_enc, model='cnn')[0]
 
         # Comparison source for face pictures.
-        print('before picture path ' + str(SIP))
+        print(' before picture path ' + str(SIP))
 
         # The data is processed as a feature quantity.
         en_b = face_recognition.face_encodings(before_enc)[0]
