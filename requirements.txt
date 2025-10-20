@@ -8,5 +8,6 @@ matplotlib
 opencv-python
 python-dotenv
 setuptools<81.0
+tqdm
 twine
 wheel
