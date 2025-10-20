@@ -5,7 +5,6 @@ from os.path import dirname, join
 from typing import Optional
 
 import cv2
-import debugpy
 import face_recognition
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
