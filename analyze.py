@@ -58,7 +58,7 @@ try:
         cv2.startWindowThread()
         cv2.imshow('ALL picture image.', all_enc)
         cv2.imshow('Before picture image.', before_enc)
-        cv2.waitKey(15000)
+        cv2.waitKey(7500)
         cv2.waitKey(1)
         cv2.destroyAllWindows()
         cv2.waitKey(1)
