@@ -56,7 +56,7 @@ class Face(threading.Thread):
         cv2.imshow('Yourself before picture image.', my_before)
         cv2.imshow('Yourself after picture image.', my_after)
         # Window closes in 8 seconds
-        cv2.waitKey(15000)
+        cv2.waitKey(7500)
         cv2.waitKey(1)
         cv2.destroyAllWindows()
         cv2.waitKey(1)
