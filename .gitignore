@@ -2,3 +2,5 @@
 .env
 .mypy_cache/*
 Images/*
+.idea/*
+.venv/*
