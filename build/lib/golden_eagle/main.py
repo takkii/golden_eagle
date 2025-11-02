@@ -9,7 +9,6 @@ import face_recognition
 
 # face compare to myself_(before and after and evaluation)
 def compare_before_after(before, after, evaluation):
-
     # This is myself before and after picture.
     before_enc = cv2.cvtColor(before, cv2.COLOR_BGR2RGB)
     after_enc = cv2.cvtColor(after, cv2.COLOR_BGR2RGB)

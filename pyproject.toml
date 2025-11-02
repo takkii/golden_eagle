@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "golden_eagle"
-version = "1.0.5.8.1"
+version = "1.0.5.9"
 authors = [{ name="Takayuki Kamiyama", email="karuma.reason@gmail.com" }]
 description = "Face Recognition Console Application"
 readme = "README.md"
