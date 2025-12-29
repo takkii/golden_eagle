@@ -2,6 +2,7 @@ import gc
 import os
 import pathlib
 import traceback
+import warnings
 from os.path import dirname, join
 
 import cv2
@@ -10,6 +11,9 @@ import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
 from tqdm import tqdm
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore', DeprecationWarning)
 
 load_dotenv(verbose=True)
 
