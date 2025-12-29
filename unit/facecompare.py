@@ -15,12 +15,8 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # Use, pake.py
-# BFP = os.environ.get("before_param")
-# AFP = os.environ.get("after_param")
-
-# Use, facecompare.py
-BFP = os.environ.get("before_param_face")
-AFP = os.environ.get("after_param_face")
+BFP = os.environ.get("before_param")
+AFP = os.environ.get("after_param")
 
 # PyPi package golden-eagle accuary numbers reading in .env
 GAN = os.environ.get("ga_num") or ""
@@ -59,6 +55,25 @@ try:
 except ValueError as ext:
     print(ext)
     raise RuntimeError from None
+except FileNotFoundError:
+    # Use, facecompare.py
+    BFP = os.environ.get("before_param_face")
+    AFP = os.environ.get("after_param_face")
+
+    # Specify the path of the face photo to be compared.
+    my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
+    my_after = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+
+    # facecompare version.
+    print('{}'.format('-----------------------------------------------------------------'))
+    print('\n')
+    print("golden-eagle_version: " + ga.__version__)
+
+    # golden-eagle accuary number.
+    ga_lose: Optional[str] = GAN
+
+    # value is 0.6 and lower numbers make face comparisons more strict:
+    ga.compare_before_after(my_before, my_after, float(ga_lose))
 
 # Once Exec.
 finally:
