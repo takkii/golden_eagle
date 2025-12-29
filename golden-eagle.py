@@ -1,6 +1,7 @@
 import gc
 import os
 import threading
+import warnings
 from os.path import dirname, join
 from typing import Optional
 
@@ -10,6 +11,9 @@ import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 
 import golden_eagle as ga
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore', DeprecationWarning)
 
 load_dotenv(verbose=True)
 
