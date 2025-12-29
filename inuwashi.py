@@ -1,6 +1,7 @@
 import gc
 import os
 import threading
+import warnings
 from os.path import dirname, join
 
 import cv2
@@ -10,6 +11,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore')
 
 load_dotenv(verbose=True)
 
