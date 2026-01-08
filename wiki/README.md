@@ -1,10 +1,14 @@
 ### 顔写真でデータ分析を行うプロジェクトです。
 
-#### Python3 Package Build
+#### Python3パッケージをビルドします。
 
 > pip wheel --no-deps -w dist .
 
-※ Don't forget.
+※ 忘れないようにします。
+
+> python security.py
+
+※ 起動すると録画を開始します。スクリーン上でqを押すと保存後終了します。
 
 #### .env
 
