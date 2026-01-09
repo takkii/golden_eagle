@@ -1,3 +1,4 @@
+import datetime
 import gc
 import threading
 
@@ -18,7 +19,16 @@ class Security(threading.Thread):
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         out = cv2.VideoWriter('security_home.mp4', fourcc, fps, (w, h))
 
+        # 1時間経過したらbreakする処理を定義
+        start = datetime.datetime.now()
+        t1 = datetime.timedelta(hours=1)
+
         while True:
+            end = datetime.datetime.now()
+            elapsed_time = end - start
+            if elapsed_time >= t1:
+                break
+
             ret, camera = cap.read()
             cv2.imshow('Security cameras', camera)
             out.write(camera)
