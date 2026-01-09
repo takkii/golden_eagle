@@ -19,9 +19,16 @@ class Security(threading.Thread):
         fourcc = cv2.VideoWriter_fourcc(*"mp4v")
         out = cv2.VideoWriter('security_home.mp4', fourcc, fps, (w, h))
 
-        # 1時間経過したらbreakする処理を定義
         start = datetime.datetime.now()
+
+        # 1日経過後、breakを実行 (days=2)など変更可
+        # t1 = datetime.timedelta(days=1)
+        # 1時間経過後、breakを実行 (hours=2)など変更可
         t1 = datetime.timedelta(hours=1)
+        # 1分経過後、breakを実行 (mininutes=2)など変更可
+        # t1 = datetime.timedelta(mininutes=1)
+        # 1秒経過後、breakを実行 (seconds=2)など変更可
+        # t1 = datetime.timedelta(seconds=1)
 
         while True:
             end = datetime.datetime.now()
