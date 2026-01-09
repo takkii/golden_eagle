@@ -6,11 +6,26 @@
 
 ※ 忘れないようにします。
 
+> cd golden_eagle && pip3 install -r requirements.txt
+
 > python security.py
 
-→ 起動すると録画を開始します。スクリーン上でqを押すと、保存後終了します。
+```python
+# ... 24行目付近
 
-※ 1時間を超えないように目安に動画を保存してください。自動でそれを超えると終了します。
+# 1日経過後、breakを実行 (days=2)など変更可
+# t1 = datetime.timedelta(days=1)
+# 1時間経過後、breakを実行 (hours=2)など変更可
+t1 = datetime.timedelta(hours=1)
+# 1分経過後、breakを実行 (mininutes=2)など変更可
+# t1 = datetime.timedelta(mininutes=1)
+# 1秒経過後、breakを実行 (seconds=2)など変更可
+# t1 = datetime.timedelta(seconds=1)
+
+# ...
+```
+
+※ 初期値は1時間です。手動でタイマーを設定できます。その都度、時間設定を考慮してください。
 
 #### .env
 
