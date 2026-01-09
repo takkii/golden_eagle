@@ -1,17 +1,21 @@
-### 顔写真でデータ分析を行うプロジェクトです。
+### Golden-eagleは、顔写真でデータ分析を行うプロジェクトです。
 
-#### Python3パッケージをビルドします。
+#### プロジェクト内、Python3パッケージをビルドします。
 
 > pip wheel --no-deps -w dist .
 
 ※ 忘れないようにします。
 
-> cd golden_eagle && pip3 install -r requirements.txt
+### 防犯カメラ機能の説明
 
+> cd golden_eagle
+>
+> pip3 install -r requirements.txt
+>
 > python security.py
 
 ```python
-# ... 24行目付近
+# ... security.py/24行目付近
 
 # 1日経過後、breakを実行 (days=2)など変更可
 # t1 = datetime.timedelta(days=1)
@@ -25,7 +29,7 @@ t1 = datetime.timedelta(hours=1)
 # ...
 ```
 
-※ 初期値は1時間です。手動でタイマーを設定できます。その都度、時間設定を考慮してください。
+※ 初期値は1時間、手動でタイマーを設定できます。その都度、時間設定を考慮してください。
 
 #### .env
 
@@ -50,4 +54,4 @@ ga_num_run = 0.32
 lo_num = 0.442
 ```
 
-> 更新履歴: 2025/10/17
+> 更新履歴: 2026/01/10
