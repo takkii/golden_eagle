@@ -31,6 +31,10 @@ t1 = datetime.timedelta(hours=1)
 
 ※ 初期値は1時間、手動でタイマーを設定できます。その都度、時間設定を考慮してください。
 
+#### recongnition.py
+
+※ Windows Terminalなど端末上で、ctrl+cで終了してください。
+
 #### .env
 
 ```ruby
@@ -52,6 +56,10 @@ after_param_face = "../Images/run/face_2.gif"
 ga_num_run = 0.32
 # Using, analyze.py
 lo_num = 0.442
+# use bakachon path.
+picture_images = "./images/face.jpg"
+# face name
+name = "Takayuki Kamiyama"
 ```
 
 > 更新履歴: 2026/01/10
