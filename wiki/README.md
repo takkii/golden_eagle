@@ -60,8 +60,10 @@ ga_num_run = 0.32
 lo_num = 0.442
 # Using, recognition.py
 picture_images = "./images/face.jpg"
-# Use recognition.py (face name)
+# Using, recognition.py (face name)
 name = "Takayuki Kamiyama"
+# Using, recognition.py (accuary)
+fl_num = 0.4
 ```
 
 > 更新履歴: 2026/01/11
