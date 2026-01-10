@@ -24,6 +24,7 @@ load_dotenv(dotenv_path)
 BFP = os.environ.get("before_param")
 PCI = os.environ.get("picture_images")
 NAM = os.environ.get("name")
+FLN = os.environ.get("fl_num") or ""
 
 try:
     # Get a reference to webcam #0 (the default one)
@@ -67,12 +68,13 @@ try:
                 rgb_small_frame, face_locations)
 
             face_names = []
+            lose = FLN
 
             for face_encoding in face_encodings:
-                # tolerance = 0.4, default value.
+                # Setting, tolerance in .env
                 matches = face_recognition.compare_faces(known_face_encodings,
                                                          face_encoding,
-                                                         tolerance=0.4)
+                                                         tolerance=float(lose))
                 name = "Unknown"
 
                 # Or instead, use the known face with the smallest distance to the new face
