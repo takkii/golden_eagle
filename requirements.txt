@@ -1,3 +1,4 @@
+cmake
 debugpy
 dlib
 face-recognition
@@ -6,7 +7,10 @@ japanize-matplotlib
 numpy
 matplotlib
 opencv-python
+opencv-contrib-python
 python-dotenv
+pytk
+Pillow
 setuptools<81.0
 tqdm
 twine
