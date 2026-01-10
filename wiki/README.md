@@ -44,7 +44,7 @@ t1 = datetime.timedelta(hours=1)
 single_param = "./Images/scan/myself.gif"
 # all picture path.
 all_param = "./Images/run/"
-# Yourself before picture image.
+# Yourself before picture image (Using recognition.py ...etc)
 before_param = "./Images/run/face_1.gif"
 # Yourself after picture image.
 after_param = "./Images/run/face_2.gif"
@@ -58,12 +58,10 @@ after_param_face = "../Images/run/face_2.gif"
 ga_num_run = 0.32
 # Using, analyze.py
 lo_num = 0.442
-# use bakachon path.
+# Using, recognition.py
 picture_images = "./images/face.jpg"
-# face name
+# Use recognition.py (face name)
 name = "Takayuki Kamiyama"
-# Use, recognition.py
-fl_num = 0.4
 ```
 
 > 更新履歴: 2026/01/11
