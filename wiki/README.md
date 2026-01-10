@@ -62,6 +62,8 @@ lo_num = 0.442
 picture_images = "./images/face.jpg"
 # face name
 name = "Takayuki Kamiyama"
+# Use, recognition.py
+fl_num = 0.4
 ```
 
-> 更新履歴: 2026/01/10
+> 更新履歴: 2026/01/11
