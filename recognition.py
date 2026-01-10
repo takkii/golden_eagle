@@ -53,7 +53,7 @@ while True:
         # Convert frame of BGR2RGB for faster face recognition processing
         small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
-        # Convert the image from COLOR_BGR2RGB color (which face_recognition uses)
+        # Convert the image to COLOR_BGR2RGB color (which face_recognition uses)
         rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
         # Find all the faces and face encodings in the current frame of video
