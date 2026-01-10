@@ -49,6 +49,10 @@ try:
     process_this_frame = True
 
     while True:
+        # Hit 'q' on the keyboard to quit!
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
         # Grab a single frame of video
         ret, frame = video_capture.read()
 
@@ -106,7 +110,7 @@ try:
                         (255, 255, 255), 1)
 
             # Display the resulting image
-            cv2.imshow('"Terminal, Please Ctrl+C"', frame)
+            cv2.imshow('"Face recognition / Video"', frame)
             k = cv2.waitKey(1) & 0xff
             img = imutils.resize(frame, width=350)
 
@@ -118,7 +122,7 @@ try:
                     w_size = int(pil_image.width)
                     h_size = int(pil_image.height)
                     root = tk.Tk()
-                    root.title("s=save / alt+F4=close")
+                    root.title("s=save q=exit / alt+F4=close")
                     canvas = tk.Canvas(root, width=w_size, height=h_size)
                     canvas.pack()
                     tk_image = ImageTk.PhotoImage(
