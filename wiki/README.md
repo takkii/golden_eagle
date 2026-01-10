@@ -33,7 +33,9 @@ t1 = datetime.timedelta(hours=1)
 
 #### recongnition.py
 
-※ Windows Terminalなど端末上で、ctrl+cで終了してください。
+起動時のqで終了することを有効化しました。何回か押してみてください。
+
+それでも終了しないとき、Windows Terminalなど端末上でctrl+cで終了してください。
 
 #### .env
 
