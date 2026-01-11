@@ -108,7 +108,7 @@ try:
                         (255, 255, 255), 1)
 
             # Display the resulting image
-            cv2.imshow('"Face recognition / Video"', frame)
+            cv2.imshow("Face Recognition Movies: s=save | q=exit", frame)
             k = cv2.waitKey(1) & 0xff
             img = imutils.resize(frame, width=350)
 
@@ -120,7 +120,7 @@ try:
                     w_size = int(pil_image.width)
                     h_size = int(pil_image.height)
                     root = tk.Tk()
-                    root.title("s=save q=exit / alt+F4=close")
+                    root.title("Take On: q=exit | alt+F4=close")
                     canvas = tk.Canvas(root, width=w_size, height=h_size)
                     canvas.pack()
                     tk_image = ImageTk.PhotoImage(
