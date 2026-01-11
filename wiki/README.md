@@ -33,9 +33,11 @@ t1 = datetime.timedelta(hours=1)
 
 #### recongnition.py
 
-起動時のqで終了することを有効化しました。何回か押してみてください。
+> 起動時のqで終了することを有効化しました。何回か終了するまで、押してみてください。
 
-それでも終了しないとき、Windows Terminalなど端末上でctrl+cで終了してください。
+※ それでも終了しないとき、Windows Terminalなど端末上でctrl+cで終了してください。
+
+> 2人、認識出来るようにしました。名前とPATH(画像)を変えて使用してみてください。
 
 #### .env
 
@@ -60,8 +62,12 @@ ga_num_run = 0.32
 lo_num = 0.442
 # Using, recognition.py
 picture_images = "./images/face.jpg"
-# Using, recognition.py (face name)
+# My Family picture path.
+keiko_params = "./Images/keiko/keiko.gif"
+# Name, takayuki.
 name = "Takayuki Kamiyama"
+# Name, keiko.
+keiko_name = "Keiko Kamiyama"
 # Using, recognition.py (accuary)
 fl_num = 0.4
 ```

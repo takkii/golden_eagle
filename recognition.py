@@ -22,8 +22,10 @@ load_dotenv(dotenv_path)
 
 # before picture path.
 BFP = os.environ.get("before_param")
+KEP = os.environ.get("keiko_params")
 PCI = os.environ.get("picture_images")
 NAM = os.environ.get("name")
+KEM = os.environ.get("keiko_name")
 FLN = os.environ.get("fl_num") or ""
 
 try:
@@ -34,10 +36,20 @@ try:
     takayuki_image = face_recognition.load_image_file(str(BFP))
     takayuki_face_encoding = face_recognition.face_encodings(takayuki_image)[0]
 
-    # Create arrays of known face encodings and their names
-    known_face_encodings = [takayuki_face_encoding]
+    # Load a second sample picture and learn how to recognize it.
+    keiko_image = face_recognition.load_image_file(str(KEP))
+    keiko_face_encoding = face_recognition.face_encodings(keiko_image)[0]
 
-    known_face_names = [str(NAM)]
+    # Create arrays of known face encodings and their names
+    known_face_encodings = [
+        takayuki_face_encoding,
+        keiko_face_encoding
+    ]
+
+    known_face_names = [
+        str(NAM),
+        str(KEM)
+    ]
 
     # Initialize some variables
     face_locations = []
