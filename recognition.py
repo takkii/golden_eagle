@@ -108,7 +108,7 @@ try:
                         (255, 255, 255), 1)
 
             # Display the resulting image
-            cv2.imshow("Face Recognition Movies: s=save | q=exit", frame)
+            cv2.imshow("Face Recognition Videos: s=save | q=exit", frame)
             k = cv2.waitKey(1) & 0xff
             img = imutils.resize(frame, width=350)
 
