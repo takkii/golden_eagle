@@ -29,8 +29,10 @@ KEM = os.environ.get("keiko_name")
 FLN = os.environ.get("fl_num") or ""
 
 try:
-    # Get a reference to webcam #0 (the default one)
+    # Get a reference to webcam #0 (Built-in camera)
     video_capture = cv2.VideoCapture(0)
+    # Get a reference to webcam #1 (External usb camera)
+    # video_capture = cv2.VideoCapture(1)
 
     # Load a sample picture and learn how to recognize it.
     takayuki_image = face_recognition.load_image_file(str(BFP))
