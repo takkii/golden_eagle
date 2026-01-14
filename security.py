@@ -12,7 +12,11 @@ class Security(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
+        # 内蔵カメラを利用
         cap = cv2.VideoCapture(0)
+        # 外部カメラ、USB接続カメラを利用
+        # cap = cv2.VideoCapture(1)
+
         fps = int(cap.get(cv2.CAP_PROP_FPS))
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
