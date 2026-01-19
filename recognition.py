@@ -8,8 +8,8 @@ import cv2
 import face_recognition
 import imutils
 import numpy as np
-from PIL import Image, ImageTk
 from dotenv import load_dotenv
+from PIL import Image, ImageTk
 
 load_dotenv(verbose=True)
 
@@ -22,10 +22,10 @@ load_dotenv(dotenv_path)
 
 # before picture path.
 BFP = os.environ.get("before_param")
-KEP = os.environ.get("keiko_params")
+TWP = os.environ.get("two_params")
 PCI = os.environ.get("picture_images")
-NAM = os.environ.get("name")
-KEM = os.environ.get("keiko_name")
+ONM = os.environ.get("one_name")
+TWM = os.environ.get("two_name")
 FLN = os.environ.get("fl_num") or ""
 
 try:
@@ -35,23 +35,17 @@ try:
     # video_capture = cv2.VideoCapture(1)
 
     # Load a sample picture and learn how to recognize it.
-    takayuki_image = face_recognition.load_image_file(str(BFP))
-    takayuki_face_encoding = face_recognition.face_encodings(takayuki_image)[0]
+    one_image = face_recognition.load_image_file(str(BFP))
+    one_face_encoding = face_recognition.face_encodings(one_image)[0]
 
     # Load a second sample picture and learn how to recognize it.
-    keiko_image = face_recognition.load_image_file(str(KEP))
-    keiko_face_encoding = face_recognition.face_encodings(keiko_image)[0]
+    two_image = face_recognition.load_image_file(str(TWP))
+    two_face_encoding = face_recognition.face_encodings(two_image)[0]
 
     # Create arrays of known face encodings and their names
-    known_face_encodings = [
-        takayuki_face_encoding,
-        keiko_face_encoding
-    ]
+    known_face_encodings = [one_face_encoding, two_face_encoding]
 
-    known_face_names = [
-        str(NAM),
-        str(KEM)
-    ]
+    known_face_names = [str(ONM), str(TWM)]
 
     # Initialize some variables
     face_locations = []

@@ -71,13 +71,13 @@ lo_num = 0.442
 # Using, recognition.py
 picture_images = "./images/face.jpg"
 # My Family picture path.
-keiko_params = "./Images/keiko/keiko.gif"
+two_params = "./Images/keiko/keiko.gif"
 # Name, takayuki.
-name = "Takayuki Kamiyama"
+one_name = "Takayuki Kamiyama"
 # Name, keiko.
-keiko_name = "Keiko Kamiyama"
-# Using, recognition.py (accuary)
+two_name = "Keiko Kamiyama"
+# Use, recognition.py
 fl_num = 0.4
 ```
 
-> 更新履歴: 2026/01/11
+> 更新履歴: 2026/01/19
