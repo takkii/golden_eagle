@@ -8,8 +8,9 @@ import cv2
 import face_recognition
 import imutils
 import numpy as np
-from dotenv import load_dotenv
 from PIL import Image, ImageTk
+from dotenv import load_dotenv
+from logging import getLogger, handlers, Formatter, DEBUG
 
 load_dotenv(verbose=True)
 
@@ -27,6 +28,22 @@ PCI = os.environ.get("picture_images")
 ONM = os.environ.get("one_name")
 TWM = os.environ.get("two_name")
 FLN = os.environ.get("fl_num") or ""
+
+root_logger = getLogger()
+root_logger.setLevel(DEBUG)
+
+# When the log reaches 100KB, it is backed up and a new file is created.
+rotating_handler = handlers.RotatingFileHandler(
+    r'./recognition.log',
+    mode="a",
+    maxBytes=100 * 1024,
+    backupCount=3,
+    encoding="utf-8")
+
+logger = getLogger(__name__)
+format = Formatter('%(asctime)s : %(levelname)s : %(filename)s - %(message)s')
+rotating_handler.setFormatter(format)
+root_logger.addHandler(rotating_handler)
 
 try:
     # Get a reference to webcam #0 (Built-in camera)
@@ -91,6 +108,7 @@ try:
                 best_match_index = np.argmin(face_distances)
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
+                    logger.debug(name)
 
                 face_names.append(name)
 
