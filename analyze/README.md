@@ -30,3 +30,7 @@ C:\Users\sudok\GitHub\golden_eagle\analyze.py:69: DeprecationWarning: Conversion
 ※ 精度評価の結果をエクセルシートにコピー＆ペーストする。
 
 > 精度評価の結果(ファイル名.xlsx) / 顔認識分析.xlsx
+
+#### 来客.xlsx
+
+> recognition.pyで書き出したrecognition.logを集計、来客数を関数で計算。
