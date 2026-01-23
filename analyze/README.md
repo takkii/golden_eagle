@@ -35,4 +35,4 @@ C:\Users\sudok\GitHub\golden_eagle\analyze.py:69: DeprecationWarning: Conversion
 
 > recognition.pyで書き出したrecognition.logを集計、来客数を関数で計算。
 
-※ 但し、顔写真を登録していない人はカウントしない。
+※ 但し、顔写真を登録していない人はカウントしないものとする。
