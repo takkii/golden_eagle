@@ -78,6 +78,8 @@ one_name = "Takayuki Kamiyama"
 two_name = "Keiko Kamiyama"
 # Use, recognition.py
 fl_num = 0.4
+# Default settings, 100KB (recognition.py)
+int_num = 100
 ```
 
-> 更新履歴: 2026/01/19
+> 更新履歴: 2026/01/23
