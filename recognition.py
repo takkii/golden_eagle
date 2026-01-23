@@ -28,15 +28,17 @@ PCI = os.environ.get("picture_images")
 ONM = os.environ.get("one_name")
 TWM = os.environ.get("two_name")
 FLN = os.environ.get("fl_num") or ""
+INN = os.environ.get("int_num") or ""
 
 root_logger = getLogger()
 root_logger.setLevel(DEBUG)
 
-# When the log reaches 100KB, it is backed up and a new file is created.
+# When the log reaches Default Settings,
+# it is backed up and a new file is created.
 rotating_handler = handlers.RotatingFileHandler(
     r'./recognition.log',
     mode="a",
-    maxBytes=100 * 1024,
+    maxBytes=int(INN) * 1024,
     backupCount=3,
     encoding="utf-8")
 
