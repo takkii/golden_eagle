@@ -80,6 +80,12 @@ two_name = "Keiko Kamiyama"
 fl_num = 0.4
 # Default settings, 100KB (recognition.py)
 int_num = 100
+# connect number
+int_conn = 0
+# before/after and 1days calc
+str_calc = "hour"
+# clock is timer.
+int_clock = 1
 ```
 
-> 更新履歴: 2026/01/23
+> 更新履歴: 2026/01/25
