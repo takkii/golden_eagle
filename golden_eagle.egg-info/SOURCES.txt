@@ -1,0 +1,12 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.py
+golden_eagle/__init__.py
+golden_eagle/main.py
+golden_eagle.egg-info/PKG-INFO
+golden_eagle.egg-info/SOURCES.txt
+golden_eagle.egg-info/dependency_links.txt
+golden_eagle.egg-info/entry_points.txt
+golden_eagle.egg-info/requires.txt
+golden_eagle.egg-info/top_level.txt
