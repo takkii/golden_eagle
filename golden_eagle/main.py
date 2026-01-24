@@ -1,3 +1,4 @@
+import datetime
 import gc
 import os
 import traceback
@@ -79,3 +80,36 @@ def compare_before_after(before, after, evaluation):
     finally:
         # GC collection.
         gc.collect()
+
+
+def security(conn, clock_num):
+    # 内蔵/外付けカメラを利用
+    cap = cv2.VideoCapture(conn)
+
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    out = cv2.VideoWriter('security_home.mp4', fourcc, fps, (w, h))
+
+    start = datetime.datetime.now()
+
+    # calc経過後、breakを実行(時間の変更可)
+    t1 = datetime.timedelta(hours=clock_num)
+
+    while True:
+        end = datetime.datetime.now()
+        elapsed_time = end - start
+        if elapsed_time >= t1:
+            break
+
+        ret, camera = cap.read()
+        cv2.imshow('Security cameras', camera)
+        out.write(camera)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    out.release()
+    cv2.destroyAllWindows()
