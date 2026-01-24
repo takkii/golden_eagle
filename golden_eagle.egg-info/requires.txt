@@ -1,5 +1,0 @@
-dlib
-face-recognition
-numpy
-pydantic
-opencv-python
