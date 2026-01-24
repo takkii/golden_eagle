@@ -36,6 +36,7 @@ class Recoginition(threading.Thread):
         TWM = os.environ.get("two_name")
         FLN = os.environ.get("fl_num") or ""
         INN = os.environ.get("int_num") or ""
+        ICO = os.environ.get("int_conn") or ""
 
         root_logger = getLogger()
         root_logger.setLevel(DEBUG)
@@ -56,7 +57,7 @@ class Recoginition(threading.Thread):
 
         try:
             # Get a reference to webcam #0 (Built-in camera)
-            video_capture = cv2.VideoCapture(0)
+            video_capture = cv2.VideoCapture(int(ICO))
             # Get a reference to webcam #1 (External usb camera)
             # video_capture = cv2.VideoCapture(1)
 
