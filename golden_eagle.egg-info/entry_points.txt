@@ -1,2 +1,0 @@
-[console_scripts]
-facecompare = golden_eagle.main:main
