@@ -1,4 +1,4 @@
-### Golden-eagleは、顔写真でデータ分析を行うプロジェクトです。
+### 顔認識システムのコンソール版 (データ分析を利用)
 
 #### プロジェクト内、Python3パッケージをビルドします。
 
@@ -31,7 +31,7 @@ t1 = datetime.timedelta(hours=1)
 
 ※ 初期値は1時間、手動でタイマーを設定できます。その都度、時間設定を考慮してください。
 
-#### recongnition.py
+#### ./recongnition.py
 
 > 起動時のqで終了することを有効化しました。何回か終了するまで、押してみてください。
 
@@ -47,7 +47,7 @@ t1 = datetime.timedelta(hours=1)
 >
 > 範囲を選択後、ペイントなどに貼り付け画像として保存してください。
 
-#### .env
+#### ./.env
 
 ```ruby
 # before picture path.
@@ -88,4 +88,21 @@ int_conn_main = 0
 int_clock = 1
 ```
 
-> 更新履歴: 2026/01/25
+[picture](https://github.com/takkii/picture) | [bakachon](https://github.com/takkii/bakachon)
+
+> 上記2つのプロジェクトを使い、比較元の顔写真を.envに設定し繋いでください。
+
+```markdown
+# Rubygems/sheltered-girl
+heat branch picture takkii picture main
+cd picture
+pip3 install -r requirements.txt
+python take.py && python convert.py
+
+# PyPi packages
+pip3 install bakachon
+```
+
+
+
+> 更新履歴: 2026/01/26
