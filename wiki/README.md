@@ -104,7 +104,7 @@ int_clock = 1
 
 [picture](https://github.com/takkii/picture) | [bakachon](https://github.com/takkii/bakachon) | [sheltered-girl](https://rubygems.org/gems/sheltered-girl)
 
-> 上記2つのプロジェクトを使い、比較元の顔写真を.envに設定し繋いでください。
+> 上記のプロジェクトを使い、比較元の顔写真を.envに設定し繋いでください。
 
 ```markdown
 # Install
@@ -113,7 +113,8 @@ heat branch picture takkii picture main
 cd picture
 pip3 install bakachon
 pip3 install -r requirements.txt
-python take.py && python convert.py
+python take.py
+python convert.py
 ```
 
 > 更新履歴: 2026/01/26
