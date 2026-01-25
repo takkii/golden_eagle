@@ -80,8 +80,10 @@ two_name = "Keiko Kamiyama"
 fl_num = 0.4
 # Default settings, 100KB (recognition.py)
 int_num = 100
-# connect number (security_ga.py|main.py)
+# connect number (security_ga.py)
 int_conn = 0
+# connect number (main.py)
+int_conn_main = 0
 # clock is timer (security_ga.py)
 int_clock = 1
 ```
