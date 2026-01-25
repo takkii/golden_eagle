@@ -88,19 +88,18 @@ int_conn_main = 0
 int_clock = 1
 ```
 
-[picture](https://github.com/takkii/picture) | [bakachon](https://github.com/takkii/bakachon)
+[picture](https://github.com/takkii/picture) | [bakachon](https://github.com/takkii/bakachon) | [sheltered-girl](https://rubygems.org/gems/sheltered-girl)
 
 > 上記2つのプロジェクトを使い、比較元の顔写真を.envに設定し繋いでください。
 
 ```markdown
-# Rubygems/sheltered-girl
+# Install
+gem install sheltered-girl
 heat branch picture takkii picture main
 cd picture
+pip3 install bakachon
 pip3 install -r requirements.txt
 python take.py && python convert.py
-
-# PyPi packages
-pip3 install bakachon
 ```
 
 
