@@ -8,6 +8,8 @@
 
 ### 防犯カメラ機能の説明
 
+> git clone git@github.com:takkii/golden_eagle.git
+>
 > cd golden_eagle
 >
 > pip3 install -r requirements.txt
@@ -15,7 +17,9 @@
 > python security.py
 
 ```python
-# ... security.py/24行目付近
+# security.py/24行目
+
+# ...
 
 # 1日経過後、breakを実行 (days=2)など変更可
 # t1 = datetime.timedelta(days=1)
@@ -29,7 +33,7 @@ t1 = datetime.timedelta(hours=1)
 # ...
 ```
 
-※ 初期値は1時間、手動でタイマーを設定できます。その都度、時間設定を考慮してください。
+※ 初期値は1時間、手動で時間数を設定できます。その都度、タイマーの時間を考慮してください。
 
 #### ./recongnition.py
 
@@ -47,9 +51,13 @@ t1 = datetime.timedelta(hours=1)
 >
 > 範囲を選択後、ペイントなどに貼り付け画像として保存してください。
 
-#### ./.env
+### touch .env 
+
+※ golden_eagle/.env　になるように設置する。
 
 ```ruby
+# ↓ paste in .env ↓
+
 # before picture path.
 single_param = "./Images/scan/myself.gif"
 # all picture path.
@@ -101,7 +109,5 @@ pip3 install bakachon
 pip3 install -r requirements.txt
 python take.py && python convert.py
 ```
-
-
 
 > 更新履歴: 2026/01/26
