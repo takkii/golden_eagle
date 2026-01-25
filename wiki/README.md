@@ -8,13 +8,19 @@
 
 ### 防犯カメラ機能の説明
 
-> git clone git@github.com:takkii/golden_eagle.git
->
-> cd golden_eagle
->
-> pip3 install -r requirements.txt
->
-> python security.py
+```markdown
+# ① 複製方法
+git clone https://github.com/takkii/golden_eagle.git
+# ② 複製方法
+git clone git@github.com:takkii/golden_eagle.git
+
+※ ①と②はどちらでもよい。
+
+# 実行
+cd golden_eagle
+pip3 install -r requirements.txt
+python security.py
+```
 
 ```python
 # security.py/24行目
@@ -53,7 +59,7 @@ t1 = datetime.timedelta(hours=1)
 
 ### touch .env 
 
-※ golden_eagle/.env　になるように設置する。
+※ golden_eagle/.env になるように設置する。
 
 ```ruby
 # ↓ paste in .env ↓
