@@ -3,6 +3,7 @@ debugpy
 dlib
 face-recognition
 golden-eagle
+imutils
 japanize-matplotlib
 numpy
 matplotlib

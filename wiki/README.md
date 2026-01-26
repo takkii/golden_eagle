@@ -94,9 +94,9 @@ two_name = "Keiko Kamiyama"
 fl_num = 0.4
 # Default settings, 100KB (recognition.py)
 int_num = 100
-# connect number (security_ga.py)
+# Webcam (Built-in camera(0)|External usb camera(1))|(security_ga.py|recognition.py)
 int_conn = 0
-# connect number (main.py)
+# Webcam (Built-in camera(0)|External usb camera(1))|(main.py)
 int_conn_main = 0
 # clock is timer (security_ga.py)
 int_clock = 1
@@ -117,4 +117,17 @@ python take.py
 python convert.py
 ```
 
-> 更新履歴: 2026/01/26
+### WSL2の対応について
+
+```markdown
+[ WARN:0@1.269] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video1): can't open camera by index
+[ WARN:0@1.269] global cap.cpp:438 open VIDEOIO(FFMPEG): raised OpenCV exception:
+...
+[ERROR:0@1.269] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+```
+
+※ WSL2/RockyLinux10、Webcamの動作確認ができませんでした。 (recognition_ga.py / recognition.py)
+
+- 但し、dlibの手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。
+
+> 更新履歴: 2026/01/27
