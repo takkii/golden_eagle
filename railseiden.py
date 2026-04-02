@@ -41,7 +41,7 @@ try:
         match_word = arg_sys[1]
         file_name = match_word
         freq = get_frequency(file_name)
-        regex = '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,16})'
+        regex = '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
 
         try:
             with open("./effect.txt", mode='a', encoding='utf-8') as f:
