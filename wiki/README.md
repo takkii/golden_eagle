@@ -16,6 +16,9 @@ git clone git@github.com:takkii/golden_eagle.git
 
 ※ ①と②はどちらでもよい。
 
+# ログフォルダを作成するときのPATH先
+~/golden_eagle | $HOME/golden_eagle
+
 # 実行
 cd golden_eagle
 pip3 install -r requirements.txt
