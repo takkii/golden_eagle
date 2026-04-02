@@ -57,7 +57,7 @@ t1 = datetime.timedelta(hours=1)
 >
 > 範囲を選択後、ペイントなどに貼り付け画像として保存してください。
 
-### touch .env 
+### touch .env
 
 ※ golden_eagle/.env になるように設置する。
 
@@ -130,4 +130,27 @@ python convert.py
 
 - 但し、dlibの手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。
 
-> 更新履歴: 2026/01/27
+### newworld/railseiden.pyの移植
+
+```markdown
+# ローマ字、氏名のみ抽出
+python railseiden.py recognition.log
+
+# railseiden.pyから生成されるテキストファイル
+./effect.txt
+
+# clarify.pyは5行目までを出力設定
+python clarify.py effect.txt
+```
+
+#### 出力結果
+
+```markdown
+Kamiyama (59)
+Takayuki (47)
+Keiko (12)
+
+ Done, processed target file.
+```
+
+> 更新履歴: 2026/04/03
