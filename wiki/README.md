@@ -136,7 +136,7 @@ python convert.py
 ### newworld/railseiden.pyの移植
 
 ```markdown
-# ローマ字、氏名のみ抽出
+# ローマ字、名前のみ抽出
 python railseiden.py recognition.log
 
 # railseiden.pyから生成されるテキストファイル
@@ -149,9 +149,9 @@ python clarify.py effect.txt
 #### 出力結果
 
 ```markdown
-Kamiyama (59)
-Takayuki (47)
-Keiko (12)
+# 名前を表示します
+Takayuki (11)
+Keiko (5)
 
  Done, processed target file.
 ```
