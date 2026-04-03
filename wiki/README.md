@@ -89,17 +89,17 @@ lo_num = 0.442
 picture_images = "./images/face.jpg"
 # My Family picture path.
 two_params = "./Images/keiko/keiko.gif"
-# Name, takayuki.
-one_name = "Takayuki Kamiyama"
-# Name, keiko.
-two_name = "Keiko Kamiyama"
+# First Name, Takayuki.
+one_name = "Takayuki"
+# First Name, Keiko.
+two_name = "Keiko"
 # Use, recognition.py
 fl_num = 0.4
-# Default settings, 100KB (recognition.py)
+# Default settings, 100KB recognition.py
 int_num = 100
-# Webcam (Built-in camera(0)|External usb camera(1))|(security_ga.py|recognition.py)
+# Webcam Built-in camera (0 or 1) | security_ga.py or recognition.py
 int_conn = 0
-# Webcam (Built-in camera(0)|External usb camera(1))|(main.py)
+# Webcam Built-in camera (0 or 1) | main.py
 int_conn_main = 0
 # clock is timer (security_ga.py)
 int_clock = 1
