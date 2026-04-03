@@ -1,59 +1,16 @@
-2026-01-23 07:16:17,053 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:19,467 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:16:19,467 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:21,884 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:24,392 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:34,630 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:51,249 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:16:51,249 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:16:53,664 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:16:53,667 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:17:32,023 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:17:46,918 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:17:48,935 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:17:51,310 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:17:53,687 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:17:53,688 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:17:56,115 : DEBUG : recognition.py - Keiko Kamiyama
-2026-01-23 07:20:02,089 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 07:20:04,040 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:25,594 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:28,122 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:30,477 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:32,782 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:35,119 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:37,460 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:39,829 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-23 13:39:41,899 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:30:36,258 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:30:39,636 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:30:42,192 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:30:44,195 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:30:46,221 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:35:16,617 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:35:21,807 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:35:26,995 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:35:31,152 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:35:33,196 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:37:16,805 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:37:18,898 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:37:22,873 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 06:37:24,825 : DEBUG : recognition.py - Takayuki Kamiyama
-2026-01-25 07:45:30,009 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:45:31,990 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:45:33,923 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:45:35,856 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:45:37,789 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:46:55,061 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:46:57,057 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 07:46:58,996 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:21:26,487 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:21:28,616 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:21:30,644 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:21:32,767 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:21:34,842 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:22:39,120 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:22:41,851 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-25 11:22:45,184 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-27 04:59:34,140 : DEBUG : main.py - Takayuki Kamiyama
-2026-01-27 04:59:37,851 : DEBUG : main.py - Takayuki Kamiyama
+2026-04-03 11:17:23,259 : DEBUG : main.py - Takayuki
+2026-04-03 11:17:43,981 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:00,318 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:09,851 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:11,865 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:13,893 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:15,922 : DEBUG : main.py - Takayuki
+2026-04-03 11:18:45,664 : DEBUG : main.py - Keiko
+2026-04-03 11:18:47,699 : DEBUG : main.py - Keiko
+2026-04-03 11:18:49,760 : DEBUG : main.py - Keiko
+2026-04-03 11:18:51,839 : DEBUG : main.py - Keiko
+2026-04-03 11:18:59,618 : DEBUG : main.py - Keiko
+2026-04-03 11:19:14,775 : DEBUG : main.py - Takayuki
+2026-04-03 11:23:05,209 : DEBUG : recognition.py - Takayuki
+2026-04-03 11:23:15,602 : DEBUG : recognition.py - Takayuki
+2026-04-03 11:23:17,678 : DEBUG : recognition.py - Takayuki
