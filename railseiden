@@ -1,7 +1,0 @@
-#!/usr/bin/env python3
-# vim: filetype=python
-
-# railseiden is python commandline Interface.
-with open('./railseiden.py') as ra:
-    pkcmd = ra.read()
-    exec(pkcmd)
