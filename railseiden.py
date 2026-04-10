@@ -41,6 +41,8 @@ try:
         match_word = arg_sys[1]
         file_name = match_word
         freq = get_frequency(file_name)
+
+        # https://qiita.com/hachi8833/items/ca314f7e15dc59ccb1cb
         regex = '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
 
         try:
