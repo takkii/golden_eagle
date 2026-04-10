@@ -139,11 +139,17 @@ python convert.py
 # ローマ字、名前のみ抽出
 python railseiden.py recognition.log
 
+# UNIX環境のみCLI (railseiden.py)
+./railseiden recognition.log
+
 # railseiden.pyから生成されるテキストファイル
 ./effect.txt
 
 # clarify.py、先頭から2行目まで出力(引数指定)
 python clarify.py effect.txt 0 2
+
+# UNIX環境のみCLI (clarify.py)
+./clarify effect.txt 0 2
 ```
 
 #### 出力結果
