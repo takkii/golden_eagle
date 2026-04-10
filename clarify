@@ -1,7 +1,0 @@
-#!/usr/bin/env python3
-# vim: filetype=python
-
-# clarify is python commandline Interface.
-with open('./clarify.py') as cl:
-    pkcmd = cl.read()
-    exec(pkcmd)

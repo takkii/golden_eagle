@@ -133,29 +133,26 @@ python convert.py
 
 - 但し、dlibの手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。
 
-### newworld/railseiden.pyの移植
+### CLIの使い方
 
 ```markdown
-# ローマ字、名前のみ抽出
-python railseiden.py recognition.log
+# WSL2(UNIX推奨) ~/.zshrc
+export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 
-# UNIX環境のみCLI (railseiden.py)
-./railseiden recognition.log
+# UNIX環境 (railseiden)
+railseiden recognition.log
 
-# railseiden.pyから生成されるテキストファイル
+# railseidenから生成
 ./effect.txt
 
-# clarify.py、先頭から2行目まで出力(引数指定)
-python clarify.py effect.txt 0 2
-
-# UNIX環境のみCLI (clarify.py)
+# UNIX環境 (clarify)
 ./clarify effect.txt 0 2
 ```
 
 #### 出力結果
 
 ```markdown
-# 名前を表示します
+# 名前を先頭から2行目まで、指定の行数出力。
 Takayuki (11)
 Keiko (5)
 
