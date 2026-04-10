@@ -142,8 +142,8 @@ python railseiden.py recognition.log
 # railseiden.pyから生成されるテキストファイル
 ./effect.txt
 
-# clarify.pyは5行目までを出力設定
-python clarify.py effect.txt
+# clarify.py、先頭から2行目まで出力(引数指定)
+python clarify.py effect.txt 0 2
 ```
 
 #### 出力結果
@@ -156,4 +156,4 @@ Keiko (5)
  Done, processed target file.
 ```
 
-> 更新履歴: 2026/04/03
+> 更新履歴: 2026/04/11
