@@ -146,6 +146,9 @@ cd golden_eagle
 # UNIX環境 (railseiden-golden_eagle)
 railseiden_ga recognition.log
 
+# UNIX環境 (meteor)
+meteor recognition.log effect.txt '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
+
 # railseidenから生成
 ./effect.txt
 
