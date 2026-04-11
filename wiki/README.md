@@ -139,6 +139,10 @@ python convert.py
 # WSL2(UNIX推奨) ~/.zshrc
 export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 
+# golden_eagle
+git clone git@github.com:takkii/golden_eagle.git
+cd golden_eagle
+
 # UNIX環境 (railseiden-golden_eagle)
 railseiden_ga recognition.log
 
