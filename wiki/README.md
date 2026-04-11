@@ -143,8 +143,8 @@ export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 git clone git@github.com:takkii/golden_eagle.git
 cd golden_eagle
 
-# UNIX環境 (railseiden-golden_eagle)
-railseiden_ga recognition.log
+# UNIX環境 (railseiden/golden_eagle)
+flare recognition.log
 
 # UNIX環境 (meteor)
 meteor recognition.log effect.txt '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
