@@ -143,14 +143,22 @@ export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 git clone git@github.com:takkii/golden_eagle.git
 cd golden_eagle
 
-# UNIX環境 (railseiden/golden_eagle)
+# UNIX環境 (pake: UnitTest)
+pake
+
+# UNIX環境 (railseiden: ver.golden_eagle)
 flare recognition.log
 
-# railseidenから生成
+# テキストファイル生成 (railseiden/flare)
 ./effect.txt
 
-# UNIX環境 (meteor)
+# UNIX環境 (meteor: origin railseiden)
 meteor recognition.log effect.txt '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
+
+# UNIX環境 (railseiden)
+git clone git@github.com:takkii/newworld.git
+cd logs
+railseiden newworld.log
 
 # UNIX環境 (clarify)
 clarify effect.txt 0 2
