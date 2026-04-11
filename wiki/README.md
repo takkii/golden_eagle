@@ -162,7 +162,7 @@ clarify effect.txt 0 2
 /usr/bin/env: shebang 行でオプションを渡すには -[v]S を使ってください
 ```
 
-※ clarify、railseiden、railseiden_gaの3ファイルが対象です。
+※ clarify、railseiden、flare、meteorが対象です。
 
 #### 出力結果
 
