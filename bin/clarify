@@ -46,10 +46,6 @@ class Clarify(threading.Thread):
             print(fileno)
             exit  # type: ignore
 
-        finally:
-            # Necessary, once exec.
-            print('\n Done, processed target file.')
-
 
 # try ~ except ~ finally.
 try:
