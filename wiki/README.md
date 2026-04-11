@@ -153,6 +153,14 @@ railseiden_ga recognition.log
 clarify effect.txt 0 2
 ```
 
+```markdown
+# CRLF → LFに改行コードを変換し保存してください。
+/usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません
+/usr/bin/env: shebang 行でオプションを渡すには -[v]S を使ってください
+```
+
+※ clarify、railseiden、railseiden_gaの3ファイルが対象です。
+
 #### 出力結果
 
 ```markdown
