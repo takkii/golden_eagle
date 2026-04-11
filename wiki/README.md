@@ -168,6 +168,13 @@ clarify effect.txt 0 2
 # CRLF → LFに改行コードを変換し保存してください。
 /usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません
 /usr/bin/env: shebang 行でオプションを渡すには -[v]S を使ってください
+
+# 「許可がありません」に対応するには
+cd golden_eagle/bin
+chmod +x clarify
+chmod +x railseiden
+chmod +x flare
+chmod +x meteor
 ```
 
 ※ clarify、railseiden、flare、meteorが対象です。
