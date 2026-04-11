@@ -1,14 +1,14 @@
-### 顔認識システムのコンソール版 (データ分析を利用)
+## 顔認識システムのコンソール版
 
-#### プロジェクト内、Python3パッケージをビルドします。
+#### 日本語に英語を混合し表現していきます。
 
 > pip wheel --no-deps -w dist .
 
-※ 忘れないようにします。
+_プロジェクト内、Python3パッケージをビルドします。_
 
 ### 防犯カメラ機能の説明
 
-```markdown
+```shell
 # ① 複製方法
 git clone https://github.com/takkii/golden_eagle.git
 # ② 複製方法
@@ -25,11 +25,10 @@ pip3 install -r requirements.txt
 python security.py
 ```
 
+#### ...
+
 ```python
 # security.py/24行目
-
-# ...
-
 # 1日経過後、breakを実行 (days=2)など変更可
 # t1 = datetime.timedelta(days=1)
 # 1時間経過後、breakを実行 (hours=2)など変更可
@@ -38,11 +37,9 @@ t1 = datetime.timedelta(hours=1)
 # t1 = datetime.timedelta(mininutes=1)
 # 1秒経過後、breakを実行 (seconds=2)など変更可
 # t1 = datetime.timedelta(seconds=1)
-
-# ...
 ```
 
-※ 初期値は1時間、手動で時間数を設定できます。その都度、タイマーの時間を考慮してください。
+_※ 初期値は1時間、手動で時間数を設定できます。その都度、タイマーの時間を考慮してください。_
 
 #### ./recongnition.py
 
@@ -62,11 +59,11 @@ t1 = datetime.timedelta(hours=1)
 
 ### touch .env
 
-※ golden_eagle/.env になるように設置する。
+_※ golden_eagle/.env になるように設置する。_
+
+### .envに下記内容を貼り付けます。
 
 ```ruby
-# ↓ paste in .env ↓
-
 # before picture path.
 single_param = "./Images/scan/myself.gif"
 # all picture path.
@@ -129,13 +126,13 @@ python convert.py
 [ERROR:0@1.269] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
 ```
 
-※ WSL2/RockyLinux10、Webcamの動作確認ができませんでした。 (recognition_ga.py / recognition.py)
+_dlibのGoogle検索で手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。_
 
-- 但し、dlibの手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。
+> ※ WSL2/RockyLinux10、Webcamの動作確認ができませんでした。 (recognition_ga.py / recognition.py)
 
 ### CLIの使い方
 
-```markdown
+```shell
 # WSL2(UNIX推奨) ~/.zshrc
 export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 
@@ -164,6 +161,8 @@ railseiden newworld.log
 clarify effect.txt 0 2
 ```
 
+### エラー表示
+
 ```markdown
 # CRLF → LFに改行コードを変換し保存してください。
 /usr/bin/env: `python3\r': そのようなファイルやディレクトリはありません
@@ -182,11 +181,10 @@ chmod +x meteor
 #### 出力結果
 
 ```markdown
-# 名前を先頭から2行目まで、指定の行数出力。
 Takayuki (11)
 Keiko (5)
-
- Done, processed target file.
 ```
+
+_※ # 名前を先頭から2行目まで、指定の行数出力します。_
 
 > 更新履歴: 2026/04/11
