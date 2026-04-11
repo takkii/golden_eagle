@@ -139,14 +139,14 @@ python convert.py
 # WSL2(UNIX推奨) ~/.zshrc
 export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 
-# UNIX環境 (railseiden)
-railseiden recognition.log
+# UNIX環境 (railseiden-golden_eagle)
+railseiden_ga recognition.log
 
 # railseidenから生成
 ./effect.txt
 
 # UNIX環境 (clarify)
-./clarify effect.txt 0 2
+clarify effect.txt 0 2
 ```
 
 #### 出力結果
