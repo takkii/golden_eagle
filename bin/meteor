@@ -60,12 +60,12 @@ try:
                                 '\n')
 
         except FileNotFoundError as fileno:
-            print('File not found to effect.txt')
+            print('File not found to ' + str(effect))
             print(fileno)
             exit  # type: ignore
 
         finally:
-            print('Complete wrote, effect.txt')
+            print('Complete wrote, ' + str(effect))
 
 except ValueError as ext:
     print(ext)
