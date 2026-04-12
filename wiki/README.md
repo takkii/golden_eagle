@@ -182,9 +182,10 @@ chmod +x clarify
 chmod +x railseiden
 chmod +x flare
 chmod +x meteor
+chmod +x holy
 ```
 
-※ clarify、railseiden、flare、meteorが対象です。
+※ clarify、railseiden、flare、meteor、holyが対象です。
 
 #### 出力結果
 
@@ -195,4 +196,4 @@ Keiko (5)
 
 _※ # 名前を先頭から2行目まで、指定の行数出力します。_
 
-> 更新履歴: 2026/04/11
+> 更新履歴: 2026/04/12
