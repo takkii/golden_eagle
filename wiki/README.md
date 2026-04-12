@@ -134,7 +134,7 @@ python convert.py
 [ERROR:0@1.269] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
 ```
 
-_dlibのGoogle検索で手動ビルドは出来ました。 golden-eagle.py / analyze.py / inuwashi.pyは動作します。_
+_dlibのGoogle検索で手動ビルドは出来ました。 golden-eagle.py / analyze.py / wing-coverts.pyは動作します。_
 
 > ※ WSL2/RockyLinux10、Webcamの動作確認ができませんでした。 (recognition_ga.py / recognition.py)
 
@@ -213,6 +213,6 @@ warnings.simplefilter('ignore', UserWarning)
 # from pkg_resources import resource_filename
 ```
 
-※ analyze.py/golden-eagle.py/inuwashi.pyの実行時UserWarningが非表示に出来る。気になる人はどうぞ。
+※ analyze.py/golden-eagle.py/wing-coverts.pyの実行時UserWarningが非表示に出来る。気になる人はどうぞ。
 
 > 更新履歴: 2026/04/13
