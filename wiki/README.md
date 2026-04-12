@@ -100,6 +100,14 @@ int_conn = 0
 int_conn_main = 0
 # clock is timer (security_ga.py)
 int_clock = 1
+# DEBUG LOG.
+debug_log = './debug.log'
+# open file.
+match_word = 'recognition.log'
+# Default, effect.txt
+effect = 'effect.txt'
+# Regex match pattern
+regex = '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
 ```
 
 [picture](https://github.com/takkii/picture) | [bakachon](https://github.com/takkii/bakachon) | [sheltered-girl](https://rubygems.org/gems/sheltered-girl)
