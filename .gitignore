@@ -1,6 +1,12 @@
-*.pyc
+# Ignore env file.
 .env
-.mypy_cache/*
-Images/*
 .idea/*
+.mypy_cache/*
+*.pyc
 .venv/*
+
+# Ignore Images Folder.
+Images/*
+
+# Ignore effect.txt
+effect.txt
