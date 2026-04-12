@@ -30,6 +30,6 @@
 
 > recognition.pyで書き出したrecognition.logを集計、来客数を関数で計算。
 >
-> または、meteorなどのUNIXシェルで正規表現を扱い対象を絞る。
+> または、golden-eagle/bin: meteor/flare/holyなどのUNIXシェルで来客数合計を換算する。
 
 ※ 但し、顔写真を登録していない人はカウントしないものとする。
