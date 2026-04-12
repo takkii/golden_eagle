@@ -151,6 +151,9 @@ cd golden_eagle
 # pake: UnitTest
 pake
 
+# Equal effect to meteor/flare project. (using .env)
+holy
+
 # railseiden: ver.golden_eagle
 flare recognition.log
 
