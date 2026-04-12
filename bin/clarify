@@ -5,6 +5,10 @@ import gc
 import os
 import sys
 import threading
+import warnings
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore', DeprecationWarning)
 
 
 # Count class
