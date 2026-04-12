@@ -32,12 +32,12 @@ class Face(threading.Thread):
     # run method
     def run(self):
         # Specify the path of the face photo to be compared.
-        my_before = face_recognition.load_image_file(os.path.expanduser(str(BFP)))
-        my_after = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
+        my_before = face_recognition.load_image_file(
+            os.path.expanduser(str(BFP)))
+        my_after = face_recognition.load_image_file(
+            os.path.expanduser(str(AFP)))
 
         # facecompare version.
-        print('{}'.format('-----------------------------------------------------------------'))
-        print('\n')
         print("golden-eagle_version: " + ga.__version__)
 
         # golden-eagle accuary number.
@@ -65,7 +65,8 @@ except FileNotFoundError:
     my_after = face_recognition.load_image_file(os.path.expanduser(str(AFP)))
 
     # facecompare version.
-    print('{}'.format('-----------------------------------------------------------------'))
+    print('{}'.format(
+        '-----------------------------------------------------------------'))
     print('\n')
     print("golden-eagle_version: " + ga.__version__)
 
