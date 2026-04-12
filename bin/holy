@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+# vim: filetype=python
+
+import gc
+import os
+import re
+import sys
+import traceback
+import warnings
+from os.path import dirname, join
+
+from dotenv import load_dotenv
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore', DeprecationWarning)
+
+load_dotenv(verbose=True)
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+# DEBUG LOG
+DEL = os.environ.get("debug_log")
+# open file.
+MAW = os.environ.get("match_word")
+# Default, effect.txt
+EFF = os.environ.get("effect")
+# Regex match pattern
+REF = os.environ.get("regex")
+
+
+def get_frequency(file):
+    try:
+        freq = {}  # type: dict
+
+        with open(os.path.expanduser(file), mode='r+',
+                  encoding='utf-8') as file_data:
+            for line in file_data:
+                words = line.split()
+
+                for word in words:
+                    word = word.rstrip('.,:!?)"')
+                    word = word.lstrip('("')
+
+                    if word in freq:
+                        freq[word] += 1
+                    else:
+                        freq[word] = 1
+
+            return freq
+
+    # TraceBack.
+    except Exception:
+        db_w = os.path.expanduser(str(DEL))
+        with open(db_w, 'a', encoding='utf-8') as log_py:
+            traceback.print_exc(file=log_py)
+
+            # throw except.
+            raise RuntimeError from None
+
+
+try:
+    if __name__ == '__main__':
+        arg_sys = sys.argv
+        match_word = str(MAW)
+        effect = str(EFF)
+        file_name = match_word
+        freq = get_frequency(file_name)
+        regex = str(REF)
+
+        try:
+            with open(str(effect), mode='a', encoding='utf-8') as f:
+                for word in sorted(
+                        freq,
+                        key=freq.get,  # type: ignore
+                        reverse=True):
+                    match = re.search(regex, word)
+
+                    if match:
+                        f.write(match.group() + ' (' + str(freq[word]) + ')' +
+                                '\n')
+
+        except FileNotFoundError as fileno:
+            print('File not found to ' + str(effect))
+            print(fileno)
+            exit  # type: ignore
+
+        finally:
+            print('Complete wrote, ' + str(effect))
+
+except ValueError as ext:
+    print(ext)
+    raise RuntimeError from None
+
+finally:
+    gc.collect()
