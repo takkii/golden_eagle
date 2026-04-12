@@ -140,33 +140,30 @@ _dlibのGoogle検索で手動ビルドは出来ました。 golden-eagle.py / an
 
 ### CLIの使い方
 
-```shell
-# WSL2(UNIX推奨) ~/.zshrc
+```markdown
+# ~/.zshrc
 export PATH="/mnt/c/Users/users/GitHub/golden_eagle/bin:$PATH"
 
 # golden_eagle
 git clone git@github.com:takkii/golden_eagle.git
 cd golden_eagle
 
-# UNIX環境 (pake: UnitTest)
+# pake: UnitTest
 pake
 
-# UNIX環境 (railseiden: ver.golden_eagle)
+# railseiden: ver.golden_eagle
 flare recognition.log
 
-# テキストファイル生成 (railseiden/flare)
+# create textfile: railseiden/flare/holy/meteor
 ./effect.txt
 
-# UNIX環境 (meteor: origin railseiden)
+# meteor: origin railseiden
 meteor recognition.log effect.txt '(([AEIOUKSTNHMYRWGZDBCFJ][tshy]?[aeiou]?)([kstnhmyrwgzdbcfj]?[tshy]?[aeiou]n?){2,8})'
 
-# UNIX環境 (railseiden)
+# railseiden
 git clone git@github.com:takkii/newworld.git
 cd logs
 railseiden newworld.log
-
-# UNIX環境 (clarify)
-clarify effect.txt 0 2
 ```
 
 ### エラー表示
@@ -185,11 +182,12 @@ chmod +x meteor
 chmod +x holy
 ```
 
-※ clarify、railseiden、flare、meteor、holyが対象です。
+※ clarify、railseiden、flare、meteor、holyはUNIX環境のみ対応しています。
 
-#### 出力結果
+#### clarify effect.txt 0 2
 
 ```markdown
+# 出力結果
 Takayuki (11)
 Keiko (5)
 ```
