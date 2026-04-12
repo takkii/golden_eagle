@@ -199,9 +199,9 @@ _※ # 名前を先頭から2行目まで、指定の行数出力します。_
 
 ### UserWarningの対応
 
-> C:\Users\user\scoop\apps\python313\current\Lib\site-packages\face_recognition_models\__init__.py
-
 ```markdown
+C:/Users/user/scoop/apps/python313/current/Lib/site-packages/face_recognition_models/__init__.py
+
 # __version__ = '0.1.0'の空白を含んで下に追加。
 # 7行目 ~ 11行目に貼り付け
 import os
