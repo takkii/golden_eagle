@@ -53,15 +53,15 @@ _※ golden_eagle/.env になるように設置する。_
 
 ### .envに下記内容を貼り付けます。
 
-```ruby
+```shell
 # before picture path.
-single_param = "./Images/scan/myself.gif"
+single_param = "../Images/scan/myself.gif"
 # all picture path.
-all_param = "./Images/run/"
+all_param = "../Images/run/"
 # Yourself before picture image (Using recognition.py ...etc)
-before_param = "./Images/run/face_1.gif"
+before_param = "../Images/run/face_1.gif"
 # Yourself after picture image.
-after_param = "./Images/run/face_2.gif"
+after_param = "../Images/run/face_2.gif"
 # Using, facecompare.py
 ga_num = 0.32
 # Using, facecompare.py
@@ -70,12 +70,12 @@ before_param_face = "../Images/run/face_1.gif"
 after_param_face = "../Images/run/face_2.gif"
 # Using, golden-eagle.py
 ga_num_run = 0.32
-# Using, flakey.py
+# Using, analyze.py
 lo_num = 0.442
 # Using, recognition.py
-picture_images = "./images/face.jpg"
+picture_images = "../images/face.jpg"
 # My Family picture path.
-two_params = "./Images/keiko/keiko.gif"
+two_params = "../Images/keiko/keiko.gif"
 # First Name, Takayuki.
 one_name = "Takayuki"
 # First Name, Keiko.
@@ -93,7 +93,7 @@ int_clock = 1
 # DEBUG LOG.
 debug_log = './debug.log'
 # open file.
-match_word = 'recognition.log'
+match_word = './recognition.log'
 # Default, effect.txt
 effect = 'effect.txt'
 # Regex match pattern
