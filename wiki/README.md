@@ -197,22 +197,25 @@ Keiko (5)
 
 _※ # 名前を先頭から2行目まで、指定の行数出力します。_
 
-### UserWarningの対応
+### 実行時、警告文の対応
 
 ```markdown
+# Windows, use scoop.
 C:/Users/user/scoop/apps/python313/current/Lib/site-packages/face_recognition_models/__init__.py
+# WSL2, use anyenv/pyenv.
+/home/user/.anyenv/envs/pyenv/versions/3.13.13/lib/python3.13/site-packages/face_recognition_models/__init__.py
 
 # __version__ = '0.1.0'の空白を含んで下に追加。
-# 7行目 ~ 11行目に貼り付け
+# ↓ 7行目 ~ 11行目に貼り付け ↓
 import os
 import warnings
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', UserWarning)
-# ... 下記の記述があるところ。
+# ↑ ... 下記の記述があるところ。↑
 # from pkg_resources import resource_filename
 ```
 
-※ analyze.py/golden-eagle.py/wing-coverts.pyの実行時UserWarningが非表示に出来る。気になる人はどうぞ。
+※ 「analyze.py/golden-eagle.py/wing-coverts.py」UserWarningを非表示、警告文が気になる人は上記を追加してみて下さい。
 
 > 更新履歴: 2026/04/13
