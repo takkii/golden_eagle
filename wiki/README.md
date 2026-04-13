@@ -201,9 +201,9 @@ _※ # 名前を先頭から2行目まで、指定の行数出力します。_
 ### 実行時、警告文の対応
 
 ```markdown
-# Windows, use scoop.
+# Windows, default:user use scoop/python313.
 C:/Users/user/scoop/apps/python313/current/Lib/site-packages/face_recognition_models/__init__.py
-# WSL2, use anyenv/pyenv.
+# WSL2, default:user use anyenv/pyenv.
 /home/user/.anyenv/envs/pyenv/versions/3.13.13/lib/python3.13/site-packages/face_recognition_models/__init__.py
 
 # __version__ = '0.1.0'の空白を含んで下に追加。
@@ -216,11 +216,13 @@ warnings.simplefilter('ignore', UserWarning)
 # ↑ ... 下記の記述があるところ。↑
 # from pkg_resources import resource_filename
 
-# QFontDatabase: Cannot find font directory 
+# WSL2 RUN / python analyze.py
+# QFontDatabase: Cannot find font directory
 # Note that Qt no longer ships fonts. Deploy some (from https://dejavu-fonts.github.io/ for example) or switch to fontconfig.
 
-※ analyze.py golden-eagle.py wing-coverts.pyを実行するときはWindows側を推奨します。
-※ clarify railseiden flare meteor holy pakeを実行するときWSL2側を推奨します。
+※ WSL2、analyze.pyなどを実行するとfontconfigに切り替えメッセージが流れます。Windowsで実行するとメッセージは流れません。
+※ Windows (推奨) analyze.py golden-eagle.py wing-coverts.py recognition.py recognition_ga.py security.py security_ga.py
+※ WSL2 (推奨) clarify railseiden flare meteor holy pake
 ```
 
 _警告文が気になる人は上記を参考に対応して下さい。_
