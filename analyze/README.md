@@ -1,4 +1,4 @@
-> python .\analyze.py
+> python .\flakey.py
 
 ```markdown
   0%|                                                                   | 0/2 [00:00<?, ?it/s] before picture path ./Images/scan/myself.gif
