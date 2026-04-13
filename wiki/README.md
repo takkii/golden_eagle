@@ -216,6 +216,8 @@ warnings.simplefilter('ignore', UserWarning)
 # from pkg_resources import resource_filename
 ```
 
-※ 「analyze.py/golden-eagle.py/wing-coverts.py」UserWarningを非表示、警告文が気になる人は上記を追加してみて下さい。
+※ 「analyze.py/golden-eagle.py/wing-coverts.py」UserWarningを非表示、
+
+_警告文が気になる人は上記を追加してみて下さい。_
 
 > 更新履歴: 2026/04/13
