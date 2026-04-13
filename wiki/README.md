@@ -80,7 +80,7 @@ before_param_face = "../Images/run/face_1.gif"
 after_param_face = "../Images/run/face_2.gif"
 # Using, golden-eagle.py
 ga_num_run = 0.32
-# Using, analyze.py
+# Using, flakey.py
 lo_num = 0.442
 # Using, recognition.py
 picture_images = "./images/face.jpg"
@@ -216,12 +216,12 @@ warnings.simplefilter('ignore', UserWarning)
 # ↑ ... 下記の記述があるところ。↑
 # from pkg_resources import resource_filename
 
-# WSL2 RUN / python analyze.py
+# WSL2 RUN / python flakey.py
 # QFontDatabase: Cannot find font directory
 # Note that Qt no longer ships fonts. Deploy some (from https://dejavu-fonts.github.io/ for example) or switch to fontconfig.
 
-※ WSL2、analyze.pyなどを実行するとfontconfigに切り替えメッセージが流れます。Windowsで実行するとメッセージは流れません。
-※ Windows (推奨) analyze.py golden-eagle.py wing-coverts.py recognition.py recognition_ga.py security.py security_ga.py
+※ WSL2、flakey.pyなどを実行するとfontconfigに切り替えメッセージが流れます。Windowsで実行するとメッセージは流れません。
+※ Windows (推奨) flakey.py golden-eagle.py wing-coverts.py recognition.py recognition_ga.py security.py security_ga.py
 ※ WSL2 (推奨) clarify railseiden flare meteor holy pake
 ```
 
