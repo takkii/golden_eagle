@@ -1,10 +1,10 @@
 ## 顔認識システムのコンソール版
 
-#### 日本語に英語を混合し表現していきます。
+#### 日本語と英語で環境構築を表現していきます。
 
 > pip wheel --no-deps -w dist .
 
-_プロジェクト内、Python3パッケージをビルドします。_
+_プロジェクト内、Python3パッケージを配布用ビルドします。_
 
 ### 防犯カメラ機能の説明
 
@@ -41,7 +41,7 @@ t1 = datetime.timedelta(hours=1)
 
 _※ 初期値は1時間、手動で時間数を設定できます。その都度、タイマーの時間を考慮してください。_
 
-#### ./recongnition.py
+#### python recongnition.py
 
 > 起動時のqで終了することを有効化しました。何回か終了するまで、押してみてください。
 
@@ -125,7 +125,7 @@ python take.py
 python convert.py
 ```
 
-### WSL2の対応について
+### recognition_ga.py | recognition.pyのWSL2対応について
 
 ```markdown
 [ WARN:0@1.269] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video1): can't open camera by index
@@ -134,11 +134,11 @@ python convert.py
 [ERROR:0@1.269] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
 ```
 
-_dlibのGoogle検索で手動ビルドは出来ました。 golden-eagle.py / analyze.py / wing-coverts.pyは動作します。_
+_※ dlibのGoogle検索でWindowsビルドは出来ました。 golden-eagle.pyなどは動作します。_
 
-> ※ WSL2/RockyLinux10、Webcamの動作確認ができませんでした。 (recognition_ga.py / recognition.py)
+> WSL2/RockyLinux10、Webcamの動作確認ができませんでした。
 
-### CLIの使い方
+### UNIX環境シェルの使い方
 
 ```markdown
 # ~/.zshrc
@@ -169,7 +169,7 @@ cd logs
 railseiden newworld.log
 ```
 
-### エラー表示
+### 気になるエラー表示
 
 ```markdown
 # CRLF → LFに改行コードを変換し保存してください。
@@ -186,7 +186,7 @@ chmod +x holy
 chmod +x pake
 ```
 
-※ clarify、railseiden、flare、meteor、holy、pakeはUNIX環境のみ対応しています。
+※ clarify、railseiden、flare、meteor、holy、pakeはUNIX環境シェルのみ対応しています。
 
 #### clarify effect.txt 0 2
 
@@ -196,9 +196,9 @@ Takayuki (11)
 Keiko (5)
 ```
 
-_※ # 名前を先頭から2行目まで、指定の行数出力します。_
+_※ 先頭から2行目まで、指定の行数出力します。_
 
-### 実行時、警告文の対応
+### 実行時、警告文の対応について
 
 ```markdown
 # Windows, default:user use scoop/python313.
@@ -225,6 +225,6 @@ warnings.simplefilter('ignore', UserWarning)
 ※ WSL2 (推奨) clarify railseiden flare meteor holy pake
 ```
 
-_警告文が気になる人は上記を参考に対応して下さい。_
+_警告文に対応したい方は、上記を参考にして下さい。_
 
 > 更新履歴: 2026/04/13
