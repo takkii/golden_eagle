@@ -183,9 +183,10 @@ chmod +x railseiden
 chmod +x flare
 chmod +x meteor
 chmod +x holy
+chmod +x pake
 ```
 
-※ clarify、railseiden、flare、meteor、holyはUNIX環境のみ対応しています。
+※ clarify、railseiden、flare、meteor、holy、pakeはUNIX環境のみ対応しています。
 
 #### clarify effect.txt 0 2
 
@@ -214,10 +215,14 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', UserWarning)
 # ↑ ... 下記の記述があるところ。↑
 # from pkg_resources import resource_filename
+
+# QFontDatabase: Cannot find font directory 
+# Note that Qt no longer ships fonts. Deploy some (from https://dejavu-fonts.github.io/ for example) or switch to fontconfig.
+
+※ analyze.py golden-eagle.py wing-coverts.pyを実行するときはWindows側を推奨します。
+※ clarify railseiden flare meteor holy pakeを実行するときWSL2側を推奨します。
 ```
 
-※ 「analyze.py/golden-eagle.py/wing-coverts.py」UserWarningを非表示、
-
-_警告文が気になる人は上記を追加してみて下さい。_
+_警告文が気になる人は上記を参考に対応して下さい。_
 
 > 更新履歴: 2026/04/13
