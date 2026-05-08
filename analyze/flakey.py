@@ -2,7 +2,6 @@ import gc
 import os
 import pathlib
 import traceback
-from typing import Optional
 import warnings
 from os.path import dirname, join
 
@@ -57,12 +56,10 @@ try:
         en_a = face_recognition.face_encodings(all_enc)[0]
 
         # Add a square green line around the face.
-        cv2.rectangle(
-            all_enc,
-            (lo_all[3], lo_all[0]), (lo_all[1], lo_all[2]), (0, 255, 0), 3)
-        cv2.rectangle(
-            before_enc, (lo_before[3], lo_before[0]),
-            (lo_before[1], lo_before[2]), (0, 255, 0), 3)
+        cv2.rectangle(all_enc, (lo_all[3], lo_all[0]), (lo_all[1], lo_all[2]),
+                      (0, 255, 0), 3)
+        cv2.rectangle(before_enc, (lo_before[3], lo_before[0]),
+                      (lo_before[1], lo_before[2]), (0, 255, 0), 3)
 
         # # Launch two images.
         cv2.startWindowThread()
@@ -76,33 +73,24 @@ try:
         # hyoka_accuracy calc / result.
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
         hyoka: npt.DTypeLike = np.floor(face_d * 1000).astype(int) / 1000
-        hyoka_fl: Optional[npt.DTypeLike] = np.float32(hyoka)   # type: ignore
+
+        # Typed, np.float32
+        hyoka32 = hyoka.astype(np.float32)  # type: ignore
 
         # Specify the accuracy assessment value.
         lose = LON
 
         # # A return value of lose or less is expected.
-        if hyoka.astype(np.float64)[0] < float(lose):   # type: ignore
-            successes = (
-                    "⭕️ success: "
-                    + str(lose)
-                    + " > hyoka_accuracy: "
-                    + str(hyoka_fl)
-                    + " all picture path "
-                    + str(img_file_name)
-            )
+        if hyoka32[0] < float(lose):  # type: ignore
+            successes = ("⭕️ success: " + str(lose) + " > hyoka_accuracy: " +
+                         str(hyoka32) + " all picture path " +
+                         str(img_file_name))
             print(successes)
 
         # Values of lose or higher are expected.
-        elif not hyoka.astype(np.float64)[0] < float(lose):     # type: ignore
-            failed = (
-                    "❎️ failed: "
-                    + str(lose)
-                    + " < hyoka_accuracy: "
-                    + str(hyoka_fl)
-                    + " all picture path "
-                    + str(img_file_name)
-            )
+        elif not hyoka32[0] < float(lose):  # type: ignore
+            failed = ("❎️ failed: " + str(lose) + " < hyoka_accuracy: " +
+                      str(hyoka32) + " all picture path " + str(img_file_name))
             print(failed)
 
         # Usually not reached.
