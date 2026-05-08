@@ -12,7 +12,7 @@ license = {file = "LICENSE.txt"}
 classifiers = [
      "Programming Language :: Python :: 3.13",
 ]
-dependencies = ['dlib', 'face-recognition', 'numpy', 'pydantic' , 'opencv-python']
+dependencies = ['dlib', 'face-recognition', 'numpy', 'opencv-python']
 
 [project.scripts]
 facecompare = 'golden_eagle.main:main'
