@@ -34,7 +34,8 @@ def compare_before_after(before, after, evaluation):
     en_loc_before = face_recognition.face_locations(before_enc, model='cnn')[0]
     en_before = face_recognition.face_encodings(before_enc)[0]
 
-    cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]), (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
+    cv2.rectangle(before, (en_loc_before[3], en_loc_before[0]),
+                  (en_loc_before[1], en_loc_before[2]), (0, 255, 0), 3)
 
     # A list of 128-dimensional face recognition after encode
     # The default is "hog" / other select "cnn"
@@ -42,13 +43,15 @@ def compare_before_after(before, after, evaluation):
     en_loc_after = face_recognition.face_locations(after_enc, model='cnn')[0]
     en_after = face_recognition.face_encodings(after_enc)[0]
 
-    cv2.rectangle(after, (en_loc_after[3], en_loc_after[0]), (en_loc_after[1], en_loc_after[2]), (0, 255, 0), 3)
+    cv2.rectangle(after, (en_loc_after[3], en_loc_after[0]),
+                  (en_loc_after[1], en_loc_after[2]), (0, 255, 0), 3)
 
     # https://face-recognition.readthedocs.io/en/latest/readme.html
     # You can do that with the --tolerance parameter. The default tolerance
     tolerance: Optional[float] = evaluation
 
-    results: Optional[list] = face_recognition.compare_faces([en_before], en_after, tolerance=tolerance)
+    results = face_recognition.compare_faces(
+        [en_before], en_after, tolerance=tolerance)  # type: ignore
 
     # Add exception handling.
     try:
@@ -60,12 +63,14 @@ def compare_before_after(before, after, evaluation):
         # Values of 0.32 or higher are expected.
         elif not results[0]:
             # Unique exception occurrence.
-            raise ValueError("hyoka accuracy is over number, Please use different picture")
+            raise ValueError(
+                "hyoka accuracy is over number,Please use different picture")
 
         # Usually not reached.
         else:
             # Unique exception occurrence.
-            raise ValueError("hyoka accuracy is diable, Please select diffrent picture.")
+            raise ValueError(
+                "hyoka accuracy is diable, Please select diffrent picture.")
 
     # TraceBack.
     except Exception:
@@ -101,7 +106,7 @@ def security(conn, clock_num):
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # type: ignore
     out = cv2.VideoWriter('security_home.mp4', fourcc, fps, (w, h))
 
     start = datetime.datetime.now()
@@ -143,15 +148,15 @@ def recognition():
 
     # When the log reaches Default Settings,
     # it is backed up and a new file is created.
-    rotating_handler = handlers.RotatingFileHandler(
-        r'./recognition.log',
-        mode="a",
-        maxBytes=int(INN) * 1024,
-        backupCount=3,
-        encoding="utf-8")
+    rotating_handler = handlers.RotatingFileHandler(r'./recognition.log',
+                                                    mode="a",
+                                                    maxBytes=int(INN) * 1024,
+                                                    backupCount=3,
+                                                    encoding="utf-8")
 
     logger = getLogger(__name__)
-    format = Formatter('%(asctime)s : %(levelname)s : %(filename)s - %(message)s')
+    format = Formatter(
+        '%(asctime)s : %(levelname)s : %(filename)s - %(message)s')
     rotating_handler.setFormatter(format)
     root_logger.addHandler(rotating_handler)
 
@@ -177,7 +182,7 @@ def recognition():
         # Initialize some variables
         face_locations = []
         face_encodings = []
-        face_names = []
+        face_names = []  # type: ignore
         process_this_frame = True
 
         while True:
@@ -190,15 +195,15 @@ def recognition():
 
             # Only process every other frame of video to save time
             if process_this_frame:
-                # Convert frame of BGR2RGB for faster face recognition processing
+                # Convert frame of BGR2RGB
                 small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
-                # Convert the image to COLOR_BGR2RGB color (which face_recognition uses)
+                # Convert the image to COLOR_BGR2RGB color
                 rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
                 # The default is "hog" / other select "cnn"
-                face_locations = face_recognition.face_locations(rgb_small_frame,
-                                                                 model='cnn')
+                face_locations = face_recognition.face_locations(
+                    rgb_small_frame, model='cnn')
                 face_encodings = face_recognition.face_encodings(
                     rgb_small_frame, face_locations)
 
@@ -207,12 +212,13 @@ def recognition():
 
                 for face_encoding in face_encodings:
                     # Setting, tolerance in .env
-                    matches = face_recognition.compare_faces(known_face_encodings,
-                                                             face_encoding,
-                                                             tolerance=float(lose))
+                    matches = face_recognition.compare_faces(
+                        known_face_encodings,
+                        face_encoding,
+                        tolerance=float(lose))
                     name = "Unknown"
 
-                    # Or instead, use the known face with the smallest distance to the new face
+                    # The known face with the smallest distance to the new face
                     face_distances = face_recognition.face_distance(
                         known_face_encodings, face_encoding)
                     best_match_index = np.argmin(face_distances)
@@ -225,16 +231,17 @@ def recognition():
             process_this_frame = not process_this_frame
 
             # Display the results
-            for (top, right, bottom, left), name in zip(face_locations,
-                                                        face_names):
-                # Scale back up face locations since the frame we detected in was scaled to 1/4 size
+            for (top, right, bottom,
+                 left), name in zip(face_locations, face_names):
+                # The frame we detected in was scaled to 1/4 size
                 top *= 4
                 right *= 4
                 bottom *= 5
                 left *= 4
 
                 # Draw a box around the face
-                cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+                cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0),
+                              2)
 
                 # Draw a label with a name below the face
                 cv2.rectangle(frame, (left, bottom - 35), (right, bottom),
