@@ -3,7 +3,6 @@ import os
 import threading
 import warnings
 from os.path import dirname, join
-from typing import Optional
 
 from dotenv import load_dotenv
 
