@@ -18,12 +18,13 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-
 # reference url
 # https://github.com/ageitgey/face_recognition/tree/master/examples
 # https://github.com/ageitgey/face_recognition/blob/master/examples/facerec_from_webcam_faster.py
 
+
 class Recoginition(threading.Thread):
+
     def __init__(self):
         threading.Thread.__init__(self)
 
@@ -43,15 +44,16 @@ class Recoginition(threading.Thread):
 
         # When the log reaches Default Settings,
         # it is backed up and a new file is created.
-        rotating_handler = handlers.RotatingFileHandler(
-            r'./recognition.log',
-            mode="a",
-            maxBytes=int(INN) * 1024,
-            backupCount=3,
-            encoding="utf-8")
+        rotating_handler = handlers.RotatingFileHandler(r'./recognition.log',
+                                                        mode="a",
+                                                        maxBytes=int(INN) *
+                                                        1024,
+                                                        backupCount=3,
+                                                        encoding="utf-8")
 
         logger = getLogger(__name__)
-        format = Formatter('%(asctime)s : %(levelname)s : %(filename)s - %(message)s')
+        format = Formatter(
+            '%(asctime)s : %(levelname)s : %(filename)s - %(message)s')
         rotating_handler.setFormatter(format)
         root_logger.addHandler(rotating_handler)
 
@@ -77,7 +79,7 @@ class Recoginition(threading.Thread):
             # Initialize some variables
             face_locations = []
             face_encodings = []
-            face_names = []
+            face_names = []  # type: ignore
             process_this_frame = True
 
             while True:
@@ -90,15 +92,16 @@ class Recoginition(threading.Thread):
 
                 # Only process every other frame of video to save time
                 if process_this_frame:
-                    # Convert frame of BGR2RGB for faster face recognition processing
+                    # for faster face recognition processing
                     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
-                    # Convert the image to COLOR_BGR2RGB color (which face_recognition uses)
-                    rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
+                    # Convert the image to COLOR_BGR2RGB color
+                    rgb_small_frame = cv2.cvtColor(small_frame,
+                                                   cv2.COLOR_BGR2RGB)
 
                     # The default is "hog" / other select "cnn"
-                    face_locations = face_recognition.face_locations(rgb_small_frame,
-                                                                     model='cnn')
+                    face_locations = face_recognition.face_locations(
+                        rgb_small_frame, model='cnn')
                     face_encodings = face_recognition.face_encodings(
                         rgb_small_frame, face_locations)
 
@@ -107,12 +110,13 @@ class Recoginition(threading.Thread):
 
                     for face_encoding in face_encodings:
                         # Setting, tolerance in .env
-                        matches = face_recognition.compare_faces(known_face_encodings,
-                                                                 face_encoding,
-                                                                 tolerance=float(lose))
+                        matches = face_recognition.compare_faces(
+                            known_face_encodings,
+                            face_encoding,
+                            tolerance=float(lose))
                         name = "Unknown"
 
-                        # Or instead, use the known face with the smallest distance to the new face
+                        # Known face with the smallest distance to the new face
                         face_distances = face_recognition.face_distance(
                             known_face_encodings, face_encoding)
                         best_match_index = np.argmin(face_distances)
@@ -125,16 +129,17 @@ class Recoginition(threading.Thread):
                 process_this_frame = not process_this_frame
 
                 # Display the results
-                for (top, right, bottom, left), name in zip(face_locations,
-                                                            face_names):
-                    # Scale back up face locations since the frame we detected in was scaled to 1/4 size
+                for (top, right, bottom,
+                     left), name in zip(face_locations, face_names):
+                    # The frame we detected in was scaled to 1/4 size
                     top *= 4
                     right *= 4
                     bottom *= 5
                     left *= 4
 
                     # Draw a box around the face
-                    cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+                    cv2.rectangle(frame, (left, top), (right, bottom),
+                                  (0, 255, 0), 2)
 
                     # Draw a label with a name below the face
                     cv2.rectangle(frame, (left, bottom - 35), (right, bottom),
@@ -144,7 +149,8 @@ class Recoginition(threading.Thread):
                                 (255, 255, 255), 1)
 
                     # Display the resulting image
-                    cv2.imshow("Face Recognition Videos: s=save | q=exit", frame)
+                    cv2.imshow("Face Recognition Videos: s=save | q=exit",
+                               frame)
                     k = cv2.waitKey(1) & 0xff
                     img = imutils.resize(frame, width=350)
 
@@ -157,11 +163,16 @@ class Recoginition(threading.Thread):
                             h_size = int(pil_image.height)
                             root = tk.Tk()
                             root.title("Take On: q=exit | alt+F4=close")
-                            canvas = tk.Canvas(root, width=w_size, height=h_size)
+                            canvas = tk.Canvas(root,
+                                               width=w_size,
+                                               height=h_size)
                             canvas.pack()
                             tk_image = ImageTk.PhotoImage(
                                 image=pil_image.resize((w_size, h_size)))
-                            canvas.create_image(0, 0, anchor='nw', image=tk_image)
+                            canvas.create_image(0,
+                                                0,
+                                                anchor='nw',
+                                                image=tk_image)
                             root.mainloop()
                         else:
                             raise ValueError('No images saved')
