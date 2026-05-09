@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: golden_eagle
-Version: 1.0.6.1
+Version: 1.0.6.2
 Summary: Face Recognition Console Application
 Author-email: Takayuki Kamiyama <karuma.reason@gmail.com>
 License: The MIT License
@@ -39,7 +39,6 @@ License-File: LICENSE.txt
 Requires-Dist: dlib
 Requires-Dist: face-recognition
 Requires-Dist: numpy
-Requires-Dist: pydantic
 Requires-Dist: opencv-python
 Dynamic: license-file
 
@@ -47,12 +46,11 @@ Dynamic: license-file
 License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](
 LICENSE) [![PyPI Downloads](https://static.pepy.tech/badge/golden-eagle)](https://pepy.tech/projects/golden-eagle)
 
-### Face Compare Project
-
-- This project is Face Recognition Console Application.
-
-```markdown
-pip3 install golden-eagle
-```
-
-※ Please README japanese [here](https://github.com/takkii/golden_eagle/wiki/manual_ja).
+<div align="center">
+  <h2><p>Face Compare Project</p></2>
+  <img src="./logo/dragon.gif">
+  <h5><p>Face Recognition Console Application.</p></h5>
+  <h5><p><ins>pip3 install golden-eagle</ins></p></h3>
+  <h5><p>※ Please README japanese version <a href="https://github.com/takkii/golden_eagle/wiki/manual_ja">here</a>. </p></h5>
+  <br />
+</div>
