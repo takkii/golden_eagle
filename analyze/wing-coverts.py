@@ -12,6 +12,8 @@ import numpy as np
 import numpy.typing as npt
 from dotenv import load_dotenv
 
+__all__ = ["japanize_matplotlib"]
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore')
 
@@ -61,7 +63,8 @@ class Face(threading.Thread):
         # A list of dicts of face feature locations (eyes, nose, etc)
         # model – Optional - which model to use.
         # "large" (default) or "small".
-        around_the_face_b = face_recognition.face_landmarks(my_before, ar_before)
+        around_the_face_b = face_recognition.face_landmarks(
+            my_before, ar_before)
         around_the_face_a = face_recognition.face_landmarks(my_after, ar_after)
 
         # The data is processed as a feature quantity.
@@ -69,8 +72,10 @@ class Face(threading.Thread):
         en_a = face_recognition.face_encodings(my_after)[0]
 
         # Add a square green line around the face.
-        cv2.rectangle(my_before, (lo_before[3], lo_before[0]), (lo_before[1], lo_before[2]), (0, 255, 0), 3)
-        cv2.rectangle(my_after, (lo_after[3], lo_after[0]), (lo_after[1], lo_after[2]), (0, 255, 0), 3)
+        cv2.rectangle(my_before, (lo_before[3], lo_before[0]),
+                      (lo_before[1], lo_before[2]), (0, 255, 0), 3)
+        cv2.rectangle(my_after, (lo_after[3], lo_after[0]),
+                      (lo_after[1], lo_after[2]), (0, 255, 0), 3)
 
         # hyoka_accuracy calc / result.
         face_d: npt.NDArray = face_recognition.face_distance([en_b], en_a)
@@ -113,9 +118,10 @@ class Face(threading.Thread):
         }
 
         # my_before load image, Plotting face recognition with matplotlib.
-        fig = plt.figure(
-            'Yourself before picture image.', figsize=(7, 7), facecolor='lightskyblue', layout='constrained'
-        )
+        fig = plt.figure('Yourself before picture image.',
+                         figsize=(7, 7),
+                         facecolor='lightskyblue',
+                         layout='constrained')
         bx = fig.add_subplot()
         bx.imshow(my_before)
         bx.set_axis_off()
@@ -123,21 +129,32 @@ class Face(threading.Thread):
             for name, points in face.items():
                 points = np.array(points)
 
-                bx.plot(points[:, 0], points[:, 1], 'o-', ms=3, label=jp_names[name])
+                bx.plot(points[:, 0],
+                        points[:, 1],
+                        'o-',
+                        ms=3,
+                        label=jp_names[name])
                 bx.legend(fontsize=14)
                 bx.set_title('Face Recognition Range')
 
         plt.show()
 
         # my_after load images, Plotting face recognition with matplotlib.
-        fig = plt.figure('Yourself after picture image.', figsize=(7, 7), facecolor='deeppink', layout='constrained')
+        fig = plt.figure('Yourself after picture image.',
+                         figsize=(7, 7),
+                         facecolor='deeppink',
+                         layout='constrained')
         ax = fig.add_subplot()
         ax.imshow(my_after)
         ax.set_axis_off()
         for face in around_the_face_a:
             for name, points in face.items():
                 points = np.array(points)
-                ax.plot(points[:, 0], points[:, 1], 'o-', ms=3, label=jp_names[name])
+                ax.plot(points[:, 0],
+                        points[:, 1],
+                        'o-',
+                        ms=3,
+                        label=jp_names[name])
                 ax.legend(fontsize=14)
                 ax.set_title('Face Recognition Range')
 
