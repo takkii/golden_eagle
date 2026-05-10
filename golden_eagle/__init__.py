@@ -8,4 +8,4 @@ from .main import recognition
 __all__ = ['compare_before_after', 'security', 'recognition']
 
 # version
-__version__ = version(__package__)
+__version__ = version(__package__)      # type: ignore
