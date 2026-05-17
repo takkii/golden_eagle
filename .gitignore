@@ -1,12 +1,13 @@
-# Ignore env file.
+# Ignore file.
+debug.log
 .env
+*.pyc
+
+# Ignore Folder.
 .idea/*
 .mypy_cache/*
-*.pyc
 .venv/*
-
-# Ignore Images Folder.
 Images/*
 
 # Ignore effect.txt
-effect.txt
+analyze/effect.txt
