@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![PyPI Downloads](https://static.pepy.tech/badge/golden-eagle)](https://pepy.tech/projects/golden-eagle) ![PyPI - Version](https://img.shields.io/pypi/v/golden-eagle) [![GitHub Status](https://img.shields.io/github/last-commit/takkii/golden_eagle.svg?style=flat)](GitHub)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![PyPI Downloads](https://static.pepy.tech/badge/golden-eagle)](https://pepy.tech/projects/golden-eagle) ![PyPI - Version](https://img.shields.io/pypi/v/golden-eagle) ![GitHub release](https://img.shields.io/github/release/takkii/golden_eagle.svg?style=flat) [![GitHub Status](https://img.shields.io/github/last-commit/takkii/golden_eagle.svg?style=flat)](GitHub)
 
 <div align="center">
   <h2><p>Face Compare Project</p></2>
