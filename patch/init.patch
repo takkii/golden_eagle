@@ -1,6 +1,6 @@
---- /home/takkii/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/face_recognition_models/__init__.py	2026-06-12 13:22:15.806821516 +0900
-+++ ./__init__.py	2026-06-12 13:31:16.541263400 +0900
-@@ -1,20 +1,25 @@
+--- /home/takkii/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/face_recognition_models/__init__.py	2026-06-13 01:27:53.889911670 +0900
++++ ./__init__.py	2026-06-13 01:17:38.934329200 +0900
+@@ -1,20 +1,26 @@
 -# -*- coding: utf-8 -*-
 -
 -__author__ = """Adam Geitgey"""
@@ -30,6 +30,7 @@
 +import os
 +import warnings
 +
++os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 +warnings.simplefilter('ignore', UserWarning)
 +
 +from pkg_resources import resource_filename

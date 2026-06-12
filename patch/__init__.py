@@ -7,6 +7,7 @@ __version__ = '0.1.0'
 import os
 import warnings
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', UserWarning)
 
 from pkg_resources import resource_filename
