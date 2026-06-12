@@ -16,6 +16,6 @@ cd /golden_eagle/patch
 patch -u ~/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/face_recognition_models/__init__.py < ./init.patch
 ```
 
-_winmergeでマージまたは、patchの適用など対応してください。_
+_winmergeでマージまたは、patchの適用をしてください。_
 
-> 更新履歴: 2026/06/12
+> 更新履歴: 2026/06/13
