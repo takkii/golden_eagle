@@ -95,32 +95,14 @@ Keiko (5)
 
 _※ 先頭から2行目まで、指定の行数出力します。_
 
-#### 実行時、警告文に対応するには。
-
 ```markdown
-# Windows, default:user use scoop/python313.
-C:/Users/user/scoop/apps/python313/current/Lib/site-packages/face_recognition_models/__init__.py
-# WSL2, default:user use anyenv/pyenv.
-/home/user/.anyenv/envs/pyenv/versions/3.13.13/lib/python3.13/site-packages/face_recognition_models/__init__.py
+cd ./golden_eagle/analyze
+python flakey.py
 
-# __version__ = '0.1.0'の空白を含んで下に追加。
-# ↓ 7行目 ~ 11行目に貼り付け ↓
-import os
-import warnings
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-warnings.simplefilter('ignore', UserWarning)
-# ↑ ... 下記の記述があるところ。↑
-# from pkg_resources import resource_filename
-
-# cd ./golden_eagle/analyze
-# python flakey.py
 # QFontDatabase: Cannot find font directory
 # Note that Qt no longer ships fonts. Deploy some (from https://dejavu-fonts.github.io/ for example) or switch to fontconfig.
-
-※ WSL2、flakey.pyなどを実行するとfontconfigに切り替えメッセージが流れます。Windowsで実行するとメッセージは流れません。
 ```
 
-_警告文に対応したい方は、上記を参考にして下さい。_
+_※ WSL2、flakey.pyなどを実行するとfontconfigに切り替えメッセージが流れます。Windowsで実行するとメッセージは流れません。_
 
-> 更新履歴: 2026/04/14
+> 更新履歴: 2026/06/12
