@@ -1,6 +1,6 @@
---- /home/takkii/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/face_recognition_models/__init__.py	2026-06-13 01:27:53.889911670 +0900
-+++ ./__init__.py	2026-06-13 01:17:38.934329200 +0900
-@@ -1,20 +1,26 @@
+--- /home/takkii/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/face_recognition_models/__init__.py	2026-06-13 14:44:50.655941244 +0900
++++ ./__init__.py	2026-06-13 14:43:32.992088800 +0900
+@@ -1,20 +1,32 @@
 -# -*- coding: utf-8 -*-
 -
 -__author__ = """Adam Geitgey"""
@@ -23,9 +23,9 @@
 -
 +# -*- coding: utf-8 -*-
 +
-+__author__ = """Adam Geitgey"""
-+__email__ = 'ageitgey@gmail.com'
-+__version__ = '0.1.0'
++__author__ = """Takayuki Kamiyama"""
++__email__ = 'karuma.reason@gmail.com'
++__version__ = '0.1.1'
 +
 +import os
 +import warnings
@@ -35,15 +35,21 @@
 +
 +from pkg_resources import resource_filename
 +
++
 +def pose_predictor_model_location():
-+    return resource_filename(__name__, "models/shape_predictor_68_face_landmarks.dat")
++    return resource_filename(__name__,
++                             "models/shape_predictor_68_face_landmarks.dat")
++
 +
 +def pose_predictor_five_point_model_location():
-+    return resource_filename(__name__, "models/shape_predictor_5_face_landmarks.dat")
++    return resource_filename(__name__,
++                             "models/shape_predictor_5_face_landmarks.dat")
++
 +
 +def face_recognition_model_location():
-+    return resource_filename(__name__, "models/dlib_face_recognition_resnet_model_v1.dat")
++    return resource_filename(
++        __name__, "models/dlib_face_recognition_resnet_model_v1.dat")
++
 +
 +def cnn_face_detector_model_location():
 +    return resource_filename(__name__, "models/mmod_human_face_detector.dat")
-+
