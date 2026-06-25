@@ -29,6 +29,6 @@ patch -u -R ~/.anyenv/envs/pyenv/versions/3.13.14/lib/python3.13/site-packages/f
 
 ※ コマンドプロンプトで実行するPATHは省略します。❎️
 
-_WSL2側から、各環境ごとにパッチの適用を検討してください。_✅️
+_WSL2側から、各環境ごとにパッチの適用を検討してください。✅️_
 
 > 更新履歴: 2026/06/25
